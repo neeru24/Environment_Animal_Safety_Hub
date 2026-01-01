@@ -49,6 +49,22 @@
   animation: patternMove 20s linear infinite;
 }
 
+.auth-btn{
+  padding: 10px 30px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  background-color: #2e7d32;
+  color: white;
+  margin: auto;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.auth-btn:hover{
+  background-color: #004d40;
+}
+
 @keyframes patternMove {
   0% {
     transform: translate(0, 0);
