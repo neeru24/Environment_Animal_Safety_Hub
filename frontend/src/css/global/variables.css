@@ -1,49 +1,88 @@
 :root {
     /* Light Theme (Default) */
-    --bg-color: #f4f9f4; /* Very light green/white tint */
+    --bg-color: #f4f9f4;
+    /* Very light green/white tint */
     --text-color: #333333;
     --heading-color: #2e8b57;
-    
+
     --navbar-bg: #2e8b57;
     --navbar-text: #ffffff;
     --navbar-hover: #22c55e;
-    
+
     --card-bg: #ffffff;
     --card-text: #444444;
-    --card-shadow: rgba(0,0,0,0.15);
-    
+    --card-shadow: rgba(0, 0, 0, 0.15);
+
     --footer-bg: linear-gradient(120deg, #22c55e, #3b82f6);
     --footer-text: #ffffff;
     --footer-link: #e6ffe6;
     --footer-link-hover: #b8ffb8;
-    
+
     --btn-primary-bg: #22c55e;
     --btn-primary-text: #ffffff;
-    
+
     --section-bg: transparent;
+    --section-alt-bg: #9ef0fa;
+
+    --hero-overlay: rgba(0, 0, 0, 0.45);
+    --hero-text: #ffffff;
+
+    --quiz-bg: #97f0af;
+    --quiz-text: #444444;
+    --quiz-btn-bg: #ff9800;
+    --quiz-btn-hover: #ffa726;
+
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --input-text: #333333;
+
+    --report-btn-bg: #ff4500;
+    --report-btn-hover: #ff6347;
+    --report-list-text: #333333;
 }
 
 [data-theme="dark"] {
     /* Dark Theme */
-    --bg-color: #121212; /* Deep dark background */
+    --bg-color: #121212;
+    /* Deep dark background */
     --text-color: #e0e0e0;
-    --heading-color: #4ade80; /* Lighter green for headers */
-    
-    --navbar-bg: #1b4d3e; /* Darker green */
+    --heading-color: #4ade80;
+    /* Lighter green for headers */
+
+    --navbar-bg: #1b4d3e;
+    /* Darker green */
     --navbar-text: #e0e0e0;
     --navbar-hover: #166534;
-    
+
     --card-bg: #1e1e1e;
     --card-text: #cccccc;
-    --card-shadow: rgba(0,0,0,0.5);
-    
-    --footer-bg: linear-gradient(120deg, #064e3b, #1e3a8a); /* Darker gradient */
+    --card-shadow: rgba(0, 0, 0, 0.5);
+
+    --footer-bg: linear-gradient(120deg, #064e3b, #1e3a8a);
+    /* Darker gradient */
     --footer-text: #d1d5db;
     --footer-link: #a7f3d0;
     --footer-link-hover: #ffffff;
-    
+
     --btn-primary-bg: #15803d;
     --btn-primary-text: #ffffff;
-    
+
     --section-bg: #121212;
+    --section-alt-bg: #1a1a1a;
+
+    --hero-overlay: rgba(0, 0, 0, 0.65);
+    --hero-text: #e0e0e0;
+
+    --quiz-bg: #1e3a1e;
+    --quiz-text: #cccccc;
+    --quiz-btn-bg: #d97706;
+    --quiz-btn-hover: #f59e0b;
+
+    --input-bg: #2a2a2a;
+    --input-border: #444444;
+    --input-text: #e0e0e0;
+
+    --report-btn-bg: #dc2626;
+    --report-btn-hover: #ef4444;
+    --report-list-text: #cccccc;
 }

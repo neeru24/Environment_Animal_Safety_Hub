@@ -7,6 +7,21 @@
       gap: 15px;
   }
 
+  .report-form label {
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s ease;
+  }
+
+  .report-form input,
+  .report-form textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--input-border);
+      background-color: var(--input-bg);
+      color: var(--input-text);
+      width: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   .report-form input,
   .report-form textarea {
       padding: 10px;
@@ -23,6 +38,15 @@
 
   .report-form .btn {
       width: 150px;
+      background-color: var(--report-btn-bg);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+
+  .report-form .btn:hover {
+      background-color: var(--report-btn-hover);
       background-color: #ff4500;
       border: none;
       cursor: pointer;
@@ -44,5 +68,7 @@
       margin: 0 auto;
       list-style: disc;
       padding-left: 20px;
+      color: var(--report-list-text);
+      transition: color 0.3s ease;
       color: #333;
   }

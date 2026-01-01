@@ -1,6 +1,9 @@
 /* Kids Quiz Section */
 .kids-quiz-section {
     padding: 70px 20px;
+    background-color: var(--quiz-bg);
+    /* light green soft background */
+    transition: background-color 0.3s ease;
     background-color: #97f0af;
     /* light green soft background */
 }
@@ -25,12 +28,17 @@
 
 .quiz-text h2 {
     font-size: 36px;
-    color: #2e8b57;
+    color: var(--heading-color);
     margin-bottom: 15px;
+    transition: color 0.3s ease;
 }
 
 .quiz-text p {
     font-size: 18px;
+    color: var(--quiz-text);
+    margin-bottom: 25px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
     color: #444;
     width: max(30vw,200px);
     margin-bottom: 25px;
@@ -48,13 +56,15 @@
     text-decoration: none;
     width: fit-content;
     padding: 12px 25px;
-    background-color: #ff9800;
+    background-color: var(--quiz-btn-bg);
     color: white;
     font-size: 25px;
     border-radius: 10px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
+.quiz-btn:hover {
+    background-color: var(--quiz-btn-hover);
 .quiz-btn:hover,
 .quiz-btn:focus-visible {
     background-color: #ffa726;
@@ -99,6 +109,7 @@
     .quiz-text p {
         font-size: 16px;
     }
+}
 }
 
 @media (max-width: 720px){
