@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Adoption - EcoLife</title>
+    <meta
+      name="description"
+      content="Find your perfect companion. Adopt pets from our shelters and give them a loving home."
     <title>Adopt Pets | EcoLife - Give a Home, Save a Life</title>
     <meta
       name="description"
@@ -35,6 +39,10 @@
   </head>
 
   <body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="logo">
     <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -57,6 +65,16 @@
         </div>
 
         <ul class="nav-links" id="navLinks">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#animal" class="nav-link">Animals</a></li>
+          <li><a href="#environment" class="nav-link">Environment</a></li>
+          <li><a href="quiz.html" class="nav-link">Kids Zone</a></li>
+          <li><a href="#report" class="nav-link">Report</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-auth">
+            <a href="Login.html" class="btn-login">Login</a>
+            <a href="Signup.html" class="btn-signup">Sign Up</a>
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="index.html#about" class="nav-link">About</a></li>
           <li>
@@ -77,6 +95,54 @@
     </nav>
 
     <!-- Hero Section -->
+    <section class="adoption-hero">
+      <div class="adoption-hero-content">
+        <h1>Find Your Perfect Companion</h1>
+        <p>
+          Give a loving home to a pet in need. Every adoption saves a life and
+          brings joy to your family.
+        </p>
+        <a href="#pets" class="btn btn-primary">Browse Pets</a>
+
+        <div class="adoption-stats">
+          <div class="adoption-stat">
+            <span class="stat-number" data-count="1200">0</span>
+            <span class="stat-label">Pets Adopted</span>
+          </div>
+          <div class="adoption-stat">
+            <span class="stat-number" data-count="50">0</span>
+            <span class="stat-label">Partner Shelters</span>
+          </div>
+          <div class="adoption-stat">
+            <span class="stat-number" data-count="95">0</span>
+            <span class="stat-label">Success Rate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pets Section -->
+    <section id="pets" class="pets-section">
+      <div class="pets-container">
+        <div class="pets-header" data-aos="fade-up">
+          <h2>Meet Our Pets</h2>
+          <p>
+            These wonderful animals are waiting for their forever homes. Each
+            one has been vetted, vaccinated, and is ready to join your family.
+          </p>
+        </div>
+
+        <div class="pets-filters">
+          <button class="filter-btn active" data-filter="all">All Pets</button>
+          <button class="filter-btn" data-filter="dogs">Dogs</button>
+          <button class="filter-btn" data-filter="cats">Cats</button>
+          <button class="filter-btn" data-filter="small">Small</button>
+          <button class="filter-btn" data-filter="medium">Medium</button>
+          <button class="filter-btn" data-filter="large">Large</button>
+        </div>
+
+        <div id="petsGrid" class="pets-grid">
+          <!-- Pets will be loaded here by JavaScript -->
     <section class="adopt-hero">
       <div class="adopt-hero-bg">
         <div class="hero-shape shape-1"></div>
@@ -246,6 +312,57 @@
       </div>
     </section>
 
+    <!-- Adoption Process Section -->
+    <section class="process-section">
+      <div class="process-container">
+        <div class="process-header" data-aos="fade-up">
+          <h2>Adoption Process</h2>
+          <p>Simple steps to bring home your new family member</p>
+        </div>
+
+        <div class="process-steps">
+          <div class="process-step" data-step="1" data-aos="fade-up" data-aos-delay="0">
+            <div class="process-step-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3>Choose Your Pet</h3>
+            <p>
+              Browse our available pets and find the one that captures your
+              heart. Read their profiles and view their photos.
+            </p>
+          </div>
+
+          <div class="process-step" data-step="2" data-aos="fade-up" data-aos-delay="100">
+            <div class="process-step-icon">
+              <i class="fa-solid fa-clipboard-list"></i>
+            </div>
+            <h3>Submit Application</h3>
+            <p>
+              Fill out our adoption application form. We'll review your
+              information and contact you within 24 hours.
+            </p>
+          </div>
+
+          <div class="process-step" data-step="3" data-aos="fade-up" data-aos-delay="200">
+            <div class="process-step-icon">
+              <i class="fa-solid fa-house"></i>
+            </div>
+            <h3>Home Visit</h3>
+            <p>
+              Our adoption counselors will visit your home to ensure it's a
+              safe and suitable environment for your new pet.
+            </p>
+          </div>
+
+          <div class="process-step" data-step="4" data-aos="fade-up" data-aos-delay="300">
+            <div class="process-step-icon">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+            <h3>Meet & Adopt</h3>
+            <p>
+              Meet your potential new family member at the shelter. Complete
+              the adoption paperwork and take them home!
+            </p>
     <!-- Pet Categories -->
     <section class="pet-categories-section">
       <div class="section-container">
@@ -340,6 +457,166 @@
       </div>
     </section>
 
+    <!-- Adoption Form Section -->
+    <section class="form-section">
+      <div class="form-container">
+        <form id="adoptionForm" class="adoption-form" data-aos="fade-up">
+          <div class="form-header">
+            <h2>Adoption Application</h2>
+            <p>
+              Please fill out this form to start the adoption process. We'll
+              get back to you soon!
+            </p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name *</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name *</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                class="form-input"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number *</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-input"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="address">Address *</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-input"
+              placeholder="Street address, city, state, zip code"
+              required
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="petSelect">Pet of Interest *</label>
+              <select id="petSelect" name="petSelect" class="form-select" required>
+                <option value="">Select a pet</option>
+                <!-- Options will be populated by JavaScript -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="homeType">Type of Home *</label>
+              <select id="homeType" name="homeType" class="form-select" required>
+                <option value="">Select home type</option>
+                <option value="house">House</option>
+                <option value="apartment">Apartment</option>
+                <option value="condo">Condo</option>
+                <option value="townhouse">Townhouse</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="experience">Pet Experience *</label>
+            <textarea
+              id="experience"
+              name="experience"
+              class="form-textarea"
+              placeholder="Tell us about your experience with pets. Have you owned pets before? What types?"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="reason">Why do you want to adopt?</label>
+            <textarea
+              id="reason"
+              name="reason"
+              class="form-textarea"
+              placeholder="What made you choose this particular pet? What are you looking for in a companion?"
+            ></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <div class="checkbox-group">
+              <input type="checkbox" id="agreement" name="agreement" required />
+              <label for="agreement">
+                I understand that adoption is a serious commitment and agree to
+                provide proper care, love, and attention to my adopted pet. I
+                also agree to the terms and conditions of adoption.
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit">Submit Application</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <div class="contact-container">
+        <div class="contact-content">
+          <div class="contact-info" data-aos="fade-right">
+            <h2>Questions About Adoption?</h2>
+            <p>
+              Our adoption counselors are here to help you find the perfect pet
+              and guide you through the adoption process. Don't hesitate to
+              reach out!
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <h4>Call Us</h4>
+                  <p>+91 123 456 7890</p>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <h4>Email Us</h4>
+                  <p>adopt@ecolife.com</p>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <h4>Hours</h4>
+                  <p>Mon - Sat: 9AM - 6PM</p>
     <!-- Featured Pets Section -->
     <section id="pets" class="featured-pets-section">
       <div class="section-container">
@@ -960,6 +1237,11 @@
             </div>
           </div>
 
+          <div class="contact-image" data-aos="fade-left">
+            <img
+              src="https://images.unsplash.com/photo-1544568100-847a948585b9?w=500"
+              alt="Happy family with adopted pet"
+            />
           <div class="why-adopt-images" data-aos="fade-left">
             <div class="adopt-img-wrapper">
               <img
@@ -979,6 +1261,36 @@
       </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+      <div class="newsletter-container" data-aos="zoom-in">
+        <div class="newsletter-content">
+          <div class="newsletter-icon">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+          <h2>Stay Updated!</h2>
+          <p>
+            Subscribe to our newsletter for adoption updates, pet care tips,
+            and success stories.
+          </p>
+
+          <form class="newsletter-form" id="newsletterForm">
+            <div class="newsletter-input-group">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+              />
+              <button type="submit" class="btn btn-primary">
+                Subscribe <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+
+          <p class="newsletter-note">
+            <i class="fa-solid fa-lock"></i> We respect your privacy.
+            Unsubscribe anytime.
+          </p>
     <!-- Success Stories Section -->
     <section class="success-stories-section">
       <div class="section-container">
@@ -1536,6 +1848,7 @@
     <footer class="eco-footer">
       <div class="footer-top">
         <div class="footer-container">
+          <!-- Logo & About -->
           <div class="footer-col footer-about">
             <div class="footer-logo-wrapper">
               <img
@@ -1550,6 +1863,62 @@
               and creating a cleaner environment for future generations.
             </p>
             <div class="footer-social">
+              <a href="#" class="social" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social" aria-label="Twitter">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a href="#" class="social" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" class="social" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#animal">Animal Welfare</a></li>
+              <li><a href="#environment">Environment</a></li>
+              <li><a href="quiz.html">Kids Quiz</a></li>
+              <li><a href="#report">Report Issue</a></li>
+            </ul>
+          </div>
+
+          <!-- Animals -->
+          <div class="footer-col">
+            <h4>Animals</h4>
+            <ul>
+              <li><a href="#">Missing Pets</a></li>
+              <li><a href="#">Recently Found</a></li>
+              <li><a href="#">Pet Adoption</a></li>
+              <li><a href="#">Animal Safety Tips</a></li>
+              <li><a href="#">Shelter Locations</a></li>
+            </ul>
+          </div>
+
+          <!-- Environment -->
+          <div class="footer-col">
+            <h4>Environment</h4>
+            <ul>
+              <li><a href="#">Climate Awareness</a></li>
+              <li><a href="#">Plant Care Guide</a></li>
+              <li><a href="#">Waste Segregation</a></li>
+              <li><a href="#">Recycling Tips</a></li>
+              <li><a href="#">Join Clean-Up Drives</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
               <a href="#" class="social"
                 ><i class="fa-brands fa-facebook-f"></i
               ></a>
@@ -1601,6 +1970,7 @@
               </li>
               <li>
                 <i class="fa-solid fa-envelope"></i>
+                <span>info@ecolife.com</span>
                 <span>adopt@ecolife.com</span>
               </li>
               <li>
@@ -1628,6 +1998,14 @@
     </footer>
 
     <!-- Pet Details Modal -->
+    <div id="petModal" class="modal">
+      <div class="modal-content">
+        <button class="btn-close">&times;</button>
+        <div class="modal-header">
+          <h3>Pet Details</h3>
+        </div>
+        <div class="modal-body">
+          <!-- Pet details will be loaded here -->
     <div class="pet-modal" id="petModal">
       <div class="pet-modal-content">
         <button class="modal-close" onclick="closePetModal()">
@@ -1682,6 +2060,7 @@
     </div>
 
     <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <button class="back-to-top" id="backToTop">
       <i class="fa-solid fa-arrow-up"></i>
     </button>

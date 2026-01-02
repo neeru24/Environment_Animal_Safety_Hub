@@ -1,1 +1,86 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Buddy",
+    "breed": "Golden Retriever",
+    "age": "2 years",
+    "gender": "Male",
+    "size": "Large",
+    "color": "Golden",
+    "description": "Friendly and energetic golden retriever who loves playing fetch and cuddling. Great with kids and other pets.",
+    "image": "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400",
+    "vaccinated": true,
+    "neutered": true,
+    "location": "Delhi Shelter"
+  },
+  {
+    "id": 2,
+    "name": "Luna",
+    "breed": "Persian Cat",
+    "age": "1 year",
+    "gender": "Female",
+    "size": "Medium",
+    "color": "White",
+    "description": "Beautiful Persian cat with striking blue eyes. Very affectionate and loves to be pampered.",
+    "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400",
+    "vaccinated": true,
+    "neutered": true,
+    "location": "Mumbai Shelter"
+  },
+  {
+    "id": 3,
+    "name": "Max",
+    "breed": "German Shepherd",
+    "age": "3 years",
+    "gender": "Male",
+    "size": "Large",
+    "color": "Black & Tan",
+    "description": "Intelligent and loyal German Shepherd. Excellent guard dog and family companion.",
+    "image": "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=400",
+    "vaccinated": true,
+    "neutered": true,
+    "location": "Jaipur Shelter"
+  },
+  {
+    "id": 4,
+    "name": "Bella",
+    "breed": "Beagle",
+    "age": "1.5 years",
+    "gender": "Female",
+    "size": "Medium",
+    "color": "Tri-color",
+    "description": "Curious and playful beagle with lots of energy. Loves outdoor adventures and tracking scents.",
+    "image": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400",
+    "vaccinated": true,
+    "neutered": true,
+    "location": "Chennai Shelter"
+  },
+  {
+    "id": 5,
+    "name": "Charlie",
+    "breed": "Tabby Cat",
+    "age": "6 months",
+    "gender": "Male",
+    "size": "Small",
+    "color": "Orange",
+    "description": "Playful orange tabby kitten. Full of energy and loves to explore. Perfect for first-time cat owners.",
+    "image": "https://images.unsplash.com/photo-1596854407944-bf87f6fdd49e?w=400",
+    "vaccinated": true,
+    "neutered": false,
+    "location": "Pune Shelter"
+  },
+  {
+    "id": 6,
+    "name": "Daisy",
+    "breed": "Labrador Retriever",
+    "age": "4 years",
+    "gender": "Female",
+    "size": "Large",
+    "color": "Chocolate",
+    "description": "Gentle and loving chocolate lab. Excellent with children and other animals. Loves swimming.",
+    "image": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400",
+    "vaccinated": true,
+    "neutered": true,
+    "location": "Bangalore Shelter"
+  }
+]
