@@ -186,7 +186,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 100px 30px 30px;
-    gap: 5px;
+    gap: 20px;
     transition: var(--transition-slow);
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
   }
@@ -197,7 +197,7 @@
 
   .nav-link {
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 20px;
     font-size: 1rem;
   }
 
