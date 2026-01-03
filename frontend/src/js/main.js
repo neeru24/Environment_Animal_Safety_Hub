@@ -976,3 +976,19 @@ garden.addEventListener("drop", e => {
   oxygenFill.style.width = oxygen + "%";
   oxygenFill.textContent = oxygen + "%";
 });
+
+const buttons = document.querySelectorAll(".sim-btn");
+
+const impacts = {
+  plastic: { animals: 80, water: 70, air: 60 },
+  trees: { animals: 90, water: 60, air: 50 }
+};
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const impactType = btn.dataset.impact;
+    document.getElementById("animals-bar").style.width = impacts[impactType].animals + "%";
+    document.getElementById("water-bar").style.width = impacts[impactType].water + "%";
+    document.getElementById("air-bar").style.width = impacts[impactType].air + "%";
+  });
+});
