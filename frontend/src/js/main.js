@@ -992,3 +992,94 @@ buttons.forEach(btn => {
     document.getElementById("air-bar").style.width = impacts[impactType].air + "%";
   });
 });
+
+
+
+const carbonForm = document.getElementById("carbonForm");
+const carbonResult = document.getElementById("carbonResult");
+const carbonScoreEl = document.getElementById("carbonScore");
+const carbonLevelEl = document.getElementById("carbonLevel");
+const carbonTipsEl = document.getElementById("carbonTips");
+const carbonBadge = document.getElementById("carbonBadge");
+const liveScore = document.getElementById("liveScore");
+const progressBar = document.getElementById("carbonProgress");
+
+const weights = {
+  transport: { walk: 1, public: 2, bike: 3, car: 5 },
+  electricity: { low: 1, medium: 3, high: 5 },
+  plastic: { low: 1, medium: 3, high: 5 },
+};
+
+function updateLiveScore() {
+  let score = 0;
+  let filled = 0;
+
+  ["transport", "electricity", "plastic"].forEach((id) => {
+    const val = document.getElementById(id).value;
+    if (val) {
+      score += weights[id][val];
+      filled++;
+    }
+  });
+
+  progressBar.style.width = `${(filled / 3) * 100}%`;
+  liveScore.textContent = filled ? score : "—";
+}
+
+carbonForm.addEventListener("change", updateLiveScore);
+
+carbonForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let score =
+    weights.transport[transport.value] +
+    weights.electricity[electricity.value] +
+    weights.plastic[plastic.value];
+
+  carbonScoreEl.textContent = score;
+
+  carbonTipsEl.innerHTML = "";
+  carbonBadge.className = "carbon-badge";
+
+  if (score <= 4) {
+    carbonLevelEl.textContent = "Excellent! You live a very eco-friendly life 🌱";
+    carbonBadge.textContent = "Low Impact";
+    carbonBadge.classList.add("low");
+    carbonTipsEl.innerHTML += `<li><i class="fa-solid fa-check"></i> Keep inspiring others!</li>`;
+  } else if (score <= 8) {
+    carbonLevelEl.textContent = "Moderate footprint. Small changes can help 🌍";
+    carbonBadge.textContent = "Medium Impact";
+    carbonBadge.classList.add("medium");
+    carbonTipsEl.innerHTML += `
+      <li><i class="fa-solid fa-leaf"></i> Use public transport more</li>
+      <li><i class="fa-solid fa-lightbulb"></i> Reduce power usage</li>`;
+  } else {
+    carbonLevelEl.textContent = "High footprint. Time to act now 🚨";
+    carbonBadge.textContent = "High Impact";
+    carbonBadge.classList.add("high");
+    carbonTipsEl.innerHTML += `
+      <li><i class="fa-solid fa-recycle"></i> Cut plastic usage</li>
+      <li><i class="fa-solid fa-bus"></i> Avoid private vehicles</li>
+      <li><i class="fa-solid fa-tree"></i> Plant trees regularly</li>`;
+  }
+
+  carbonResult.classList.add("success");
+  carbonResult.scrollIntoView({ behavior: "smooth" });
+});
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+function revealTimeline() {
+  timelineItems.forEach(item => {
+    const itemTop = item.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    if (itemTop < windowHeight - 100) {
+      item.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealTimeline);
+
+// Initial check
+revealTimeline();
