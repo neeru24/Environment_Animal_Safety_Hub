@@ -1,10 +1,5 @@
 /* ===== HOME PAGE SPECIFIC ===== */
 
-/**
- * Initializes the eco challenges functionality on the home page.
- * Sets up event listeners for challenge buttons that mark them as completed
- * and show success notifications when clicked.
- */
 function initEcoChallenges() {
   const challengeButtons = document.querySelectorAll(".challenge-btn");
 
@@ -27,11 +22,6 @@ function initEcoChallenges() {
   });
 }
 
-/**
- * Handles carbon footprint calculator form submission.
- * Calculates environmental impact score based on user inputs for transport,
- * electricity usage, and plastic consumption, then displays results with tips.
- */
 document.getElementById("carbonForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -42,7 +32,7 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
   const electricity = document.getElementById("electricity").value;
   const plastic = document.getElementById("plastic").value;
 
-  // Transport score calculation
+  // Transport score
   if (transport === "walk") score += 5;
   else if (transport === "public") score += 15;
   else if (transport === "bike") score += 25;
@@ -51,7 +41,7 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
     tips.push("Use public transport or carpool whenever possible.");
   }
 
-  // Electricity score calculation
+  // Electricity score
   if (electricity === "low") score += 10;
   else if (electricity === "medium") {
     score += 25;
@@ -61,7 +51,7 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
     tips.push("Reduce AC usage and use energy-efficient appliances.");
   }
 
-  // Plastic score calculation
+  // Plastic score
   if (plastic === "low") score += 10;
   else if (plastic === "medium") {
     score += 20;
@@ -71,13 +61,13 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
     tips.push("Replace single-use plastics with reusable alternatives.");
   }
 
-  // Determine footprint level based on total score
+  // Result level
   let level = "";
   if (score <= 40) level = "🌱 Low Footprint – Great job!";
   else if (score <= 80) level = "🌿 Medium Footprint – You can improve!";
   else level = "🔥 High Footprint – Time to take action!";
 
-  // Display results in the UI
+  // Display result
   const resultDiv = document.getElementById("carbonResult");
   document.getElementById("carbonScore").innerText = score;
   document.getElementById("carbonLevel").innerText = level;
@@ -93,7 +83,7 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
   resultDiv.style.display = "block";
   resultDiv.classList.add("success");
 
-  // Scroll to result for better UX
+  // Scroll to result
   resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
@@ -131,11 +121,6 @@ const glossaryData = [
 const glossaryList = document.getElementById("glossaryList");
 const searchInput = document.getElementById("glossarySearch");
 
-/**
- * Renders the environmental glossary items in the DOM.
- * Filters items based on search term and sorts alphabetically.
- * @param {string} filter - Optional search term to filter glossary items
- */
 function renderGlossary(filter = "") {
   glossaryList.innerHTML = "";
 
@@ -164,10 +149,6 @@ searchInput.addEventListener("input", e => {
   renderGlossary(e.target.value);
 });
 
-/**
- * Toggles the flipped state of a card element for interactive displays.
- * @param {HTMLElement} card - The card element to toggle
- */
 function toggleCard(card) {
   card.classList.toggle("flipped");
 }
@@ -207,10 +188,6 @@ const ecoFacts = [
 
 let factIndex = 0;
 
-/**
- * Displays the next eco fact in rotation and updates the UI elements.
- * Cycles through predefined facts about animals, recycling, and climate.
- */
 function showEcoFact() {
   const fact = ecoFacts[factIndex];
   document.getElementById("ecoFactText").innerText = fact.text;
@@ -226,14 +203,12 @@ showEcoFact();
 // Change fact every 5 seconds
 setInterval(showEcoFact, 5000);
 
-// Garden simulation drag and drop functionality
 const plants = document.querySelectorAll(".plant");
 const garden = document.getElementById("garden-plot");
 const oxygenFill = document.getElementById("oxygen-fill");
 
 let oxygen = 0;
 
-// Set up drag start for plant elements
 plants.forEach(plant => {
   plant.addEventListener("dragstart", e => {
     e.dataTransfer.setData("plant", plant.outerHTML);
@@ -241,10 +216,8 @@ plants.forEach(plant => {
   });
 });
 
-// Allow dropping in garden area
 garden.addEventListener("dragover", e => e.preventDefault());
 
-// Handle plant drop in garden - adds plant and updates oxygen level
 garden.addEventListener("drop", e => {
   e.preventDefault();
 
@@ -263,7 +236,6 @@ garden.addEventListener("drop", e => {
   oxygenFill.textContent = oxygen + "%";
 });
 
-// Impact simulation buttons - show environmental impact bars
 const buttons = document.querySelectorAll(".sim-btn");
 
 const impacts = {
@@ -271,7 +243,6 @@ const impacts = {
   trees: { animals: 90, water: 60, air: 50 }
 };
 
-// Update impact bars when simulation buttons are clicked
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
     const impactType = btn.dataset.impact;

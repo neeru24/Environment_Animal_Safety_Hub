@@ -1,6 +1,6 @@
 /* ===== MODAL SYSTEM ===== */
 
-// Data for all popups - contains content for different modal types
+// Data for all popups
 const modalContent = {
     'animal-rescue': {
         icon: 'fa-truck-medical',
@@ -115,16 +115,13 @@ const modalContent = {
     }
 };
 
-/**
- * Initializes the modal system for info popups.
- * Sets up event listeners for opening modals, closing them, and keyboard navigation.
- */
+// Initialize Modal System
 function initModalSystem() {
     const modal = document.getElementById('infoModal');
     const closeBtn = document.querySelector('.custom-modal-close');
     const modalButtons = document.querySelectorAll('.open-modal-btn');
     
-    // Open Modal - triggered by buttons with data-id attribute
+    // Open Modal
     modalButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -132,27 +129,27 @@ function initModalSystem() {
             const content = modalContent[contentId];
             
             if (content) {
-                // Populate modal with content from modalContent object
+                // Populate content
                 document.getElementById('modalHeader').innerHTML = `
                     <i class="fa-solid ${content.icon}"></i>
                     <h2>${content.title}</h2>
                 `;
                 document.getElementById('modalBody').innerHTML = content.body;
                 
-                // Show modal and prevent background scrolling
+                // Show modal
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
             }
         });
     });
     
-    // Close functions - multiple ways to close modal
+    // Close functions
     window.closeInfoModal = function() {
         modal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
+        document.body.style.overflow = '';
     }
     
-    // Close on overlay click (outside modal content)
+    // Close on overlay click
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeInfoModal();

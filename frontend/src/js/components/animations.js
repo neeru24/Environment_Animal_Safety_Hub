@@ -1,38 +1,26 @@
 /* ===== ANIMATIONS ===== */
 
-/**
- * Initializes AOS (Animate On Scroll) library if available.
- * Sets up animation parameters for smooth scroll-triggered animations.
- */
 function initAOS() {
   if (typeof AOS !== "undefined") {
     AOS.init({
-      duration: 800,      // Animation duration in ms
-      easing: "ease-out-cubic",  // Easing function
-      once: true,         // Animation occurs only once
-      offset: 50,         // Offset from element to trigger animation
-      delay: 100,         // Delay before animation starts
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
+      delay: 100,
     });
   }
 }
 
-/**
- * Initializes counter animations for stat numbers.
- * Animates numbers from 0 to target value with Intersection Observer.
- */
 function initCounterAnimation() {
   const counters = document.querySelectorAll(".stat-number");
 
   if (counters.length === 0) return;
 
-  /**
-   * Animates a single counter element.
-   * @param {Element} counter - The counter element to animate.
-   */
   const animateCounter = (counter) => {
     const target = parseInt(counter.getAttribute("data-count"));
-    const duration = 2000; // Animation duration in ms
-    const step = target / (duration / 16); // 60fps approximation
+    const duration = 2000;
+    const step = target / (duration / 16);
     let current = 0;
 
     const updateCounter = () => {
@@ -48,11 +36,6 @@ function initCounterAnimation() {
     updateCounter();
   };
 
-  /**
-   * Formats numbers with K+ suffix for large values.
-   * @param {number} num - The number to format.
-   * @returns {string} Formatted number string.
-   */
   const formatNumber = (num) => {
     if (num >= 1000) {
       return (num / 1000).toFixed(num >= 10000 ? 0 : 1) + "K+";
@@ -60,26 +43,22 @@ function initCounterAnimation() {
     return num.toLocaleString() + "+";
   };
 
-  // Intersection Observer to trigger animation when counter comes into view
+  // Intersection Observer for triggering animation
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           animateCounter(entry.target);
-          observer.unobserve(entry.target); // Animate only once
+          observer.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.5 } // Trigger when 50% of element is visible
+    { threshold: 0.5 }
   );
 
   counters.forEach((counter) => observer.observe(counter));
 }
 
-/**
- * Initializes particle effect background animation.
- * Creates floating particles for visual effect.
- */
 function initParticles() {
   const particlesContainer = document.getElementById("particles");
 
@@ -92,20 +71,16 @@ function initParticles() {
   }
 }
 
-/**
- * Creates a single floating particle element.
- * @param {Element} container - The container to append the particle to.
- */
 function createParticle(container) {
   const particle = document.createElement("div");
   particle.className = "particle";
 
-  // Random properties for natural variation
-  const size = Math.random() * 5 + 2; // Size between 2-7px
-  const left = Math.random() * 100;   // Random horizontal position
-  const delay = Math.random() * 20;   // Random start delay
-  const duration = Math.random() * 20 + 10; // Duration 10-30s
-  const opacity = Math.random() * 0.5 + 0.1; // Opacity 0.1-0.6
+  // Random properties
+  const size = Math.random() * 5 + 2;
+  const left = Math.random() * 100;
+  const delay = Math.random() * 20;
+  const duration = Math.random() * 20 + 10;
+  const opacity = Math.random() * 0.5 + 0.1;
 
   particle.style.cssText = `
         position: absolute;
@@ -121,7 +96,7 @@ function createParticle(container) {
   container.appendChild(particle);
 }
 
-// Add particle animation keyframes to document
+// Add particle animation to stylesheet
 const particleStyle = document.createElement("style");
 particleStyle.textContent = `
     @keyframes particleFloat {
@@ -143,20 +118,15 @@ particleStyle.textContent = `
 `;
 document.head.appendChild(particleStyle);
 
-/**
- * Initializes testimonial slider with touch support.
- * Adds drag functionality for desktop and touch events.
- */
 function initTestimonialSlider() {
   const slider = document.querySelector(".testimonials-slider");
   if (!slider) return;
 
-  // Variables for drag functionality
+  // Add touch support for mobile
   let isDown = false;
   let startX;
   let scrollLeft;
 
-  // Mouse events for desktop
   slider.addEventListener("mousedown", (e) => {
     isDown = true;
     slider.classList.add("active");
@@ -178,15 +148,11 @@ function initTestimonialSlider() {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
+    const walk = (x - startX) * 2;
     slider.scrollLeft = scrollLeft - walk;
   });
 }
 
-/**
- * Initializes lazy loading for images with data-src attribute.
- * Uses Intersection Observer for performance, falls back to immediate load.
- */
 function initLazyLoading() {
   const images = document.querySelectorAll("img[data-src]");
 
@@ -195,26 +161,22 @@ function initLazyLoading() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const img = entry.target;
-          img.src = img.dataset.src; // Load the actual image
-          img.removeAttribute("data-src"); // Remove data attribute
-          observer.unobserve(img); // Stop observing once loaded
+          img.src = img.dataset.src;
+          img.removeAttribute("data-src");
+          observer.unobserve(img);
         }
       });
     });
 
     images.forEach((img) => imageObserver.observe(img));
   } else {
-    // Fallback for browsers without Intersection Observer
+    // Fallback for older browsers
     images.forEach((img) => {
       img.src = img.dataset.src;
     });
   }
 }
 
-/**
- * Initializes preloader functionality.
- * Hides preloader after page load with fade effect.
- */
 function initPreloader() {
   const preloader = document.getElementById("preloader");
 
@@ -225,6 +187,6 @@ function initPreloader() {
       preloader.style.opacity = "0";
       preloader.style.visibility = "hidden";
       document.body.classList.remove("loading");
-    }, 500); // Small delay for smooth transition
+    }, 500);
   });
 }

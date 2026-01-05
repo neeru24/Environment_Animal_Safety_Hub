@@ -1,11 +1,7 @@
 /* ===== FORM HANDLERS ===== */
 
-/**
- * Initializes all form handlers for the application.
- * Sets up event listeners for report form, newsletter form, and file upload preview.
- */
 function initFormHandlers() {
-  // Report Form - handles incident reporting
+  // Report Form
   const reportForm = document.getElementById("reportForm");
   if (reportForm) {
     reportForm.addEventListener("submit", function (e) {
@@ -14,7 +10,7 @@ function initFormHandlers() {
     });
   }
 
-  // Newsletter Form - handles email subscription
+  // Newsletter Form
   const newsletterForm = document.getElementById("newsletterForm");
   if (newsletterForm) {
     newsletterForm.addEventListener("submit", function (e) {
@@ -23,7 +19,7 @@ function initFormHandlers() {
     });
   }
 
-  // File upload preview - shows selected file name
+  // File upload preview
   const fileInput = document.querySelector('.file-upload input[type="file"]');
   if (fileInput) {
     fileInput.addEventListener("change", function () {
@@ -36,35 +32,31 @@ function initFormHandlers() {
   }
 }
 
-/**
- * Handles report form submission with loading states and success feedback.
- * @param {HTMLFormElement} form - The report form element.
- */
 function handleReportSubmit(form) {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
 
-  // Show loading state on submit button
+  // Show loading state
   const submitBtn = form.querySelector('button[type="submit"]');
   const originalText = submitBtn.innerHTML;
   submitBtn.innerHTML =
     '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
   submitBtn.disabled = true;
 
-  // Simulate API call (replace with actual API call)
+  // Simulate API call
   setTimeout(() => {
-    // Reset button to success state
+    // Reset button
     submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Report Submitted!';
     submitBtn.style.background = "linear-gradient(135deg, #4caf50, #2e7d32)";
 
-    // Reset form and button after delay
+    // Reset form after delay
     setTimeout(() => {
       form.reset();
       submitBtn.innerHTML = originalText;
       submitBtn.style.background = "";
       submitBtn.disabled = false;
 
-      // Show success notification
+      // Show success message
       showNotification(
         "Report submitted successfully! We will review it shortly.",
         "success"
@@ -73,10 +65,6 @@ function handleReportSubmit(form) {
   }, 1500);
 }
 
-/**
- * Handles newsletter subscription form submission.
- * @param {HTMLFormElement} form - The newsletter form element.
- */
 function handleNewsletterSubmit(form) {
   const email = form.querySelector('input[type="email"]').value;
   const submitBtn = form.querySelector('button[type="submit"]');
@@ -86,17 +74,15 @@ function handleNewsletterSubmit(form) {
   submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
   submitBtn.disabled = true;
 
-  // Simulate API call (replace with actual subscription logic)
+  // Simulate API call
   setTimeout(() => {
     submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Subscribed!';
 
-    // Reset form and button after delay
     setTimeout(() => {
       form.reset();
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
 
-      // Show success notification
       showNotification(
         "Thank you for subscribing to our newsletter!",
         "success"
