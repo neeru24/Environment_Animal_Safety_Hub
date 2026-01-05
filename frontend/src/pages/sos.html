@@ -1,120 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Animal SOS | EcoLife</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/png" href="/envirnoment-logo.png">
+        <!-- Fonts & Icons -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Animal SOS | EcoLife</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="/envirnoment-logo.png">
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- AOS -->
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/pages/sos.css">
-</head>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../css/pages/sos.css">
+    </head>
+    <body>
+        <header class="hero" data-aos="fade-down">
+            <span class="badge">🚨 ANIMAL SOS</span>
+            <h1>Help Animals in Emergency</h1>
+            <p>Report injured, trapped, or abandoned animals instantly</p>
+        </header>
 
-<body>
-    <div class="bg-shapes">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="shape shape3"></div>
-    </div>
+        <section class="section usage">
+            <h2 data-aos="fade-up">When to Use Animal SOS</h2>
 
-    <div class="bg-blobs">
-        <span class="blob blob1"></span>
-        <span class="blob blob2"></span>
-        <span class="blob blob3"></span>
-    </div>
-
-
-    <!-- Floating Icons -->
-    <div class="floating-icons">
-        <i class="fa-solid fa-triangle-exclamation danger"></i>
-        <i class="fa-solid fa-paw paw"></i>
-        <i class="fa-solid fa-heart heart"></i>
-        <i class="fa-solid fa-bell bell"></i>
-    </div>
-
-    <!-- Header -->
-    <header class="sos-header">
-        <div class="hero-text">
-            <span class="sos-badge">SOS</span>
-            <h1>Animal SOS</h1>
-            <p>Help animals in danger by calling for help!</p>
-        </div>
-    </header>
-
-    <section class="sos-wrapper">
-        <!-- Emergency Cards -->
-        <section class="sos-grid">
-            <div class="sos-card" data-type="Injured Animal">
-                <i class="fa-solid fa-truck-medical"></i>
-                <h3>Injured Animal</h3>
-                <p>Animal hurt or bleeding</p>
-            </div>
-
-            <div class="sos-card" data-type="Hungry / Thirsty">
-                <i class="fa-solid fa-bowl-food"></i>
-                <h3>Hungry / Thirsty</h3>
-                <p>No food or water</p>
-            </div>
-
-            <div class="sos-card" data-type="Animal Trapped">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <h3>Animal Trapped</h3>
-                <p>Stuck or cannot move</p>
-            </div>
-
-            <div class="sos-card" data-type="Baby Animal Alone">
-                <i class="fa-solid fa-paw"></i>
-                <h3>Baby Animal</h3>
-                <p>Lost or abandoned</p>
-            </div>
-
-            <div class="sos-card" data-type="Other Emergency">
-                <i class="fa-solid fa-question"></i>
-                <h3>Other</h3>
-                <p>Something else</p>
+            <div class="usage-grid">
+                <div class="usage-card" data-aos="zoom-in">🐕 Injured Animal</div>
+                <div class="usage-card" data-aos="zoom-in" data-aos-delay="100">🪤 Trapped Animal</div>
+                <div class="usage-card" data-aos="zoom-in" data-aos-delay="200">🐾 Baby Animal Alone</div>
+                <div class="usage-card" data-aos="zoom-in" data-aos-delay="300">⚠️ Abuse or Danger</div>
             </div>
         </section>
-    </section>
 
-    <!-- Extra Info -->
-    <section class="extra-info">
-        <div class="info-box">
-            <label>
-                📝 What happened?
-            </label>
-            <textarea id="description" placeholder="Write what you see (simple words are okay)"></textarea>
+        <section class="section steps">
+            <h2 data-aos="fade-up">How It Works</h2>
 
-            <label>
-                📍 Where should we come?
-            </label>
-            <input type="text" id="location" placeholder="Street, park, landmark, city">
+            <div class="steps-grid">
+                <div class="step" data-aos="flip-left">
+                <span>1</span>
+                <p>Select Emergency</p>
+                </div>
+                <div class="step" data-aos="flip-left" data-aos-delay="100">
+                <span>2</span>
+                <p>Share Location</p>
+                </div>
+                <div class="step" data-aos="flip-left" data-aos-delay="200">
+                <span>3</span>
+                <p>Add Details</p>
+                </div>
+                <div class="step" data-aos="flip-left" data-aos-delay="300">
+                <span>4</span>
+                <p>Send SOS</p>
+                </div>
+                <div class="step" data-aos="flip-left" data-aos-delay="400">
+                <span>5</span>
+                <p>Help Arrives</p>
+                </div>
+            </div>
+        </section>
 
-            <button class="sos-btn" id="sosBtn">
-                📞 SEND SOS
-            </button>
+        <section class="section safety">
+            <h2 data-aos="fade-up">Safety Instructions</h2>
 
-            <p class="hint">Don't worry! Help will come 💚</p>
-        </div>
-    </section>
+            <div class="safety-grid">
+                <div class="safety-card" data-aos="fade-right">✔ Stay calm & keep distance</div>
+                <div class="safety-card" data-aos="fade-left">✔ Give water if safe</div>
+                <div class="safety-card" data-aos="fade-right">❌ Do not move injured animals</div>
+                <div class="safety-card" data-aos="fade-left">✔ Wait for trained help</div>
+            </div>
+        </section>
 
-    <!-- Popup -->
-    <div class="sos-popup" id="sosPopup">
-        <div class="popup-box">
-            <h2>🚨 SOS Sent!</h2>
-            <p id="popupText"></p>
-            <button class="close-btn">OK</button>
-        </div>
-    </div>
+        <section class="section form-section" data-aos="fade-up">
+            <h2>Send SOS</h2>
 
-    <!-- JS -->
-    <script src="../js/pages/sos.js"></script>
-    <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
-</script>
-</body>
+            <form class="sos-form">
+                <label>Emergency Type</label>
+                <select>
+                <option>Injured Animal</option>
+                <option>Trapped Animal</option>
+                <option>Hungry / Thirsty</option>
+                <option>Baby Animal</option>
+                <option>Other</option>
+                </select>
+
+                <label>Description</label>
+                <textarea placeholder="Describe the situation briefly"></textarea>
+
+                <label>Location</label>
+                <input type="text" placeholder="Street / Landmark / City">
+
+                <label>Upload Image</label>
+                <input type="file">
+
+                <button type="submit">🚑 SEND SOS</button>
+            </form>
+        </section>
+
+        <section class="section tips">
+            <h2 data-aos="fade-up">Emergency Tips</h2>
+
+            <div class="tips-grid">
+                <div class="tip-card" data-aos="zoom-in">🐾 Do not panic</div>
+                <div class="tip-card" data-aos="zoom-in" data-aos-delay="100">🚫 Avoid crowding</div>
+                <div class="tip-card" data-aos="zoom-in" data-aos-delay="200">💧 Water if conscious</div>
+                <div class="tip-card" data-aos="zoom-in" data-aos-delay="300">📞 Call helpline if critical</div>
+            </div>
+        </section>
+
+        <section class="section trust" data-aos="fade-up">
+            <h2>You Are Not Alone 💚</h2>
+            <p>Your SOS is shared with verified NGOs, vets, and volunteers for quick action.</p>
+        </section>
+
+            <!-- JS -->
+            <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+            <script src="../js/pages/sos.js"></script>
+            <script>
+                (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+            </script>
+    </body>
 
 </html>
