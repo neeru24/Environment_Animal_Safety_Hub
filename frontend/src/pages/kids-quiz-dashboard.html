@@ -192,7 +192,7 @@
       border-radius: 20px;
       padding: 30px;
       width: 90%;
-      max-width: 600px;
+      max-width: 700px;
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
@@ -323,6 +323,93 @@
       box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
+    /* ---------- PLANT GAME STYLES ---------- */
+    .plant-game {
+      text-align: center;
+    }
+
+    .plant-game-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .plant-option {
+      padding: 20px;
+      border: 2px solid #ddd;
+      border-radius: 15px;
+      cursor: pointer;
+      background: white;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+    }
+
+    .plant-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .plant-option.correct {
+      background: #e8f5e9;
+      border-color: #4caf50;
+    }
+
+    .plant-option.incorrect {
+      background: #ffebee;
+      border-color: #f44336;
+    }
+
+    .plant-image {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .plant-question {
+      background: #f4fbf6;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    .plant-question h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    .plant-stats {
+      display: flex;
+      justify-content: space-between;
+      background: #f4fbf6;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .plant-score, .plant-progress {
+      font-weight: 600;
+      color: var(--green);
+    }
+
+    .plant-result {
+      text-align: center;
+      padding: 20px;
+      background: #e8f5e9;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .plant-result h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    /* ---------- COMMON GAME STYLES ---------- */
     .game-stats {
       display: flex;
       justify-content: space-between;
@@ -332,7 +419,7 @@
       margin-bottom: 20px;
     }
 
-    .score, .timer {
+    .score, .timer, .question-number {
       font-weight: 600;
       color: var(--green);
     }
@@ -374,6 +461,8 @@
       .hero h1 { font-size: 2.2rem; }
       .recycle-bins { flex-direction: column; align-items: center; }
       .recycle-items { gap: 10px; }
+      .plant-game-grid { grid-template-columns: 1fr; }
+      .plant-option { min-height: 100px; }
     }
   </style>
 </head>
@@ -443,8 +532,8 @@
         </div>
       </div>
 
-      <!-- Plant Puzzle -->
-      <div class="card" data-category="game">
+      <!-- Plant Puzzle Game -->
+      <div class="card" data-category="game" id="plant-game-card">
         <div class="card-cover" style="background:#4caf50;color:white">
           <i class="ri-seedling-line"></i>
         </div>
@@ -474,10 +563,10 @@
     </div>
   </div>
 
-  <!-- GAME MODAL -->
-  <div class="game-modal" id="gameModal">
+  <!-- RECYCLE GAME MODAL -->
+  <div class="game-modal" id="recycleGameModal">
     <div class="game-content">
-      <button class="close-btn" id="closeGame">×</button>
+      <button class="close-btn" id="closeRecycleGame">×</button>
       
       <div class="game-header">
         <h2>♻️ Recycling Challenge</h2>
@@ -497,8 +586,8 @@
       </div>
 
       <div class="game-stats">
-        <div class="score">Score: <span id="scoreValue">0</span></div>
-        <div class="timer">Time: <span id="timerValue">60</span>s</div>
+        <div class="score">Score: <span id="recycleScoreValue">0</span></div>
+        <div class="timer">Time: <span id="recycleTimerValue">60</span>s</div>
       </div>
 
       <div class="recycle-game">
@@ -525,11 +614,59 @@
           </div>
         </div>
 
-        <div class="game-result" id="gameResult">
+        <div class="game-result" id="recycleGameResult">
           <h3>Game Over!</h3>
-          <p>Your final score: <span id="finalScore">0</span></p>
-          <p id="resultMessage"></p>
-          <button class="play-again-btn" id="playAgain">Play Again</button>
+          <p>Your final score: <span id="recycleFinalScore">0</span></p>
+          <p id="recycleResultMessage"></p>
+          <button class="play-again-btn" id="playRecycleAgain">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLANT GAME MODAL -->
+  <div class="game-modal" id="plantGameModal">
+    <div class="game-content">
+      <button class="close-btn" id="closePlantGame">×</button>
+      
+      <div class="game-header">
+        <h2>🌱 Plant Puzzle Challenge</h2>
+        <p>Match the plants with their correct characteristics!</p>
+      </div>
+
+      <div class="game-instructions">
+        <h3>How to Play:</h3>
+        <ul>
+          <li>Read the plant description carefully</li>
+          <li>Click on the correct plant that matches the description</li>
+          <li>You have 4 options to choose from</li>
+          <li>Complete all 10 questions for a perfect score!</li>
+        </ul>
+      </div>
+
+      <div class="plant-stats">
+        <div class="plant-score">Score: <span id="plantScoreValue">0</span></div>
+        <div class="plant-progress">Question: <span id="plantQuestionNumber">1</span>/10</div>
+      </div>
+
+      <div class="plant-game">
+        <div class="plant-question" id="plantQuestion">
+          <!-- Question will be generated by JavaScript -->
+        </div>
+
+        <div class="plant-game-grid" id="plantOptions">
+          <!-- Options will be generated by JavaScript -->
+        </div>
+
+        <div class="game-result" id="plantGameResult">
+          <h3>Congratulations! 🎉</h3>
+          <p>Your final score: <span id="plantFinalScore">0</span>/100</p>
+          <p id="plantResultMessage"></p>
+          <button class="play-again-btn" id="playPlantAgain">Play Again</button>
+        </div>
+
+        <div class="plant-result" id="plantAnswerFeedback">
+          <!-- Feedback will be shown here -->
         </div>
       </div>
     </div>
@@ -560,21 +697,20 @@
       });
     });
 
-    // Game functionality
-    const gameModal = document.getElementById('gameModal');
+    // =================== RECYCLE GAME ===================
+    const recycleGameModal = document.getElementById('recycleGameModal');
     const recycleGameCard = document.getElementById('recycle-game-card');
-    const closeGameBtn = document.getElementById('closeGame');
+    const closeRecycleGameBtn = document.getElementById('closeRecycleGame');
     const recycleItemsContainer = document.getElementById('recycleItems');
-    const recycleBins = document.querySelectorAll('.recycle-bin');
-    const scoreValue = document.getElementById('scoreValue');
-    const timerValue = document.getElementById('timerValue');
-    const gameResult = document.getElementById('gameResult');
-    const finalScore = document.getElementById('finalScore');
-    const resultMessage = document.getElementById('resultMessage');
-    const playAgainBtn = document.getElementById('playAgain');
+    const recycleScoreValue = document.getElementById('recycleScoreValue');
+    const recycleTimerValue = document.getElementById('recycleTimerValue');
+    const recycleGameResult = document.getElementById('recycleGameResult');
+    const recycleFinalScore = document.getElementById('recycleFinalScore');
+    const recycleResultMessage = document.getElementById('recycleResultMessage');
+    const playRecycleAgainBtn = document.getElementById('playRecycleAgain');
 
-    // Game items data
-    const gameItems = [
+    // Game items data for recycle game
+    const recycleGameItems = [
       { name: 'Plastic Bottle', type: 'plastic', emoji: '🧴' },
       { name: 'Newspaper', type: 'paper', emoji: '📰' },
       { name: 'Glass Jar', type: 'glass', emoji: '🥫' },
@@ -589,47 +725,47 @@
       { name: 'Egg Shells', type: 'organic', emoji: '🥚' }
     ];
 
-    let score = 0;
-    let timeLeft = 60;
-    let timerInterval;
-    let itemsPlaced = 0;
-    const totalItems = 8; // We'll use 8 items for the game
+    let recycleScore = 0;
+    let recycleTimeLeft = 60;
+    let recycleTimerInterval;
+    let recycleItemsPlaced = 0;
+    const recycleTotalItems = 8;
 
-    // Open game modal
+    // Open recycle game modal
     recycleGameCard.addEventListener('click', () => {
-      gameModal.style.display = 'flex';
-      startGame();
+      recycleGameModal.style.display = 'flex';
+      startRecycleGame();
     });
 
-    // Close game modal
-    closeGameBtn.addEventListener('click', () => {
-      gameModal.style.display = 'none';
-      endGame();
+    // Close recycle game modal
+    closeRecycleGameBtn.addEventListener('click', () => {
+      recycleGameModal.style.display = 'none';
+      endRecycleGame();
     });
 
     // Close modal when clicking outside
-    gameModal.addEventListener('click', (e) => {
-      if (e.target === gameModal) {
-        gameModal.style.display = 'none';
-        endGame();
+    recycleGameModal.addEventListener('click', (e) => {
+      if (e.target === recycleGameModal) {
+        recycleGameModal.style.display = 'none';
+        endRecycleGame();
       }
     });
 
-    // Start game function
-    function startGame() {
-      score = 0;
-      timeLeft = 60;
-      itemsPlaced = 0;
-      scoreValue.textContent = score;
-      timerValue.textContent = timeLeft;
-      gameResult.style.display = 'none';
+    // Start recycle game function
+    function startRecycleGame() {
+      recycleScore = 0;
+      recycleTimeLeft = 60;
+      recycleItemsPlaced = 0;
+      recycleScoreValue.textContent = recycleScore;
+      recycleTimerValue.textContent = recycleTimeLeft;
+      recycleGameResult.style.display = 'none';
       
       // Clear containers
       recycleItemsContainer.innerHTML = '';
       
       // Shuffle and select items
-      const shuffledItems = [...gameItems].sort(() => Math.random() - 0.5);
-      const selectedItems = shuffledItems.slice(0, totalItems);
+      const shuffledItems = [...recycleGameItems].sort(() => Math.random() - 0.5);
+      const selectedItems = shuffledItems.slice(0, recycleTotalItems);
       
       // Create draggable items
       selectedItems.forEach(item => {
@@ -643,120 +779,368 @@
         `;
         
         // Add drag events
-        itemDiv.addEventListener('dragstart', handleDragStart);
-        itemDiv.addEventListener('dragend', handleDragEnd);
+        itemDiv.addEventListener('dragstart', handleRecycleDragStart);
+        itemDiv.addEventListener('dragend', handleRecycleDragEnd);
         
         recycleItemsContainer.appendChild(itemDiv);
       });
       
       // Add drag events to bins
+      const recycleBins = document.querySelectorAll('.recycle-bin');
       recycleBins.forEach(bin => {
-        bin.addEventListener('dragover', handleDragOver);
-        bin.addEventListener('dragenter', handleDragEnter);
-        bin.addEventListener('dragleave', handleDragLeave);
-        bin.addEventListener('drop', handleDrop);
+        bin.addEventListener('dragover', handleRecycleDragOver);
+        bin.addEventListener('dragenter', handleRecycleDragEnter);
+        bin.addEventListener('dragleave', handleRecycleDragLeave);
+        bin.addEventListener('drop', handleRecycleDrop);
       });
       
       // Start timer
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        timerValue.textContent = timeLeft;
+      clearInterval(recycleTimerInterval);
+      recycleTimerInterval = setInterval(() => {
+        recycleTimeLeft--;
+        recycleTimerValue.textContent = recycleTimeLeft;
         
-        if (timeLeft <= 0) {
-          endGame();
+        if (recycleTimeLeft <= 0) {
+          endRecycleGame();
         }
       }, 1000);
     }
 
-    // Drag and drop functions
-    let draggedItem = null;
+    // Recycle game drag and drop functions
+    let recycleDraggedItem = null;
 
-    function handleDragStart(e) {
-      draggedItem = this;
+    function handleRecycleDragStart(e) {
+      recycleDraggedItem = this;
       this.classList.add('dragging');
       e.dataTransfer.setData('text/plain', '');
     }
 
-    function handleDragEnd() {
+    function handleRecycleDragEnd() {
       this.classList.remove('dragging');
-      draggedItem = null;
-      recycleBins.forEach(bin => bin.classList.remove('active'));
+      recycleDraggedItem = null;
+      document.querySelectorAll('.recycle-bin').forEach(bin => bin.classList.remove('active'));
     }
 
-    function handleDragOver(e) {
+    function handleRecycleDragOver(e) {
       e.preventDefault();
     }
 
-    function handleDragEnter(e) {
+    function handleRecycleDragEnter(e) {
       e.preventDefault();
       this.classList.add('active');
     }
 
-    function handleDragLeave() {
+    function handleRecycleDragLeave() {
       this.classList.remove('active');
     }
 
-    function handleDrop(e) {
+    function handleRecycleDrop(e) {
       e.preventDefault();
       this.classList.remove('active');
       
-      if (draggedItem) {
-        const itemType = draggedItem.dataset.type;
+      if (recycleDraggedItem) {
+        const itemType = recycleDraggedItem.dataset.type;
         const binType = this.dataset.type;
         
         if (itemType === binType) {
           // Correct placement
-          score += 10;
-          scoreValue.textContent = score;
-          draggedItem.style.opacity = '0.5';
-          draggedItem.style.pointerEvents = 'none';
-          draggedItem.innerHTML += '<div style="color: #4CAF50; font-size: 0.8rem;">✓ Correct!</div>';
-          
-          // Play success sound effect (would need audio file)
-          // new Audio('success.mp3').play().catch(() => {});
+          recycleScore += 10;
+          recycleScoreValue.textContent = recycleScore;
+          recycleDraggedItem.style.opacity = '0.5';
+          recycleDraggedItem.style.pointerEvents = 'none';
+          recycleDraggedItem.innerHTML += '<div style="color: #4CAF50; font-size: 0.8rem;">✓ Correct!</div>';
         } else {
           // Wrong placement
-          score = Math.max(0, score - 5);
-          scoreValue.textContent = score;
-          draggedItem.innerHTML += '<div style="color: #f44336; font-size: 0.8rem;">✗ Try Again!</div>';
+          recycleScore = Math.max(0, recycleScore - 5);
+          recycleScoreValue.textContent = recycleScore;
+          recycleDraggedItem.innerHTML += '<div style="color: #f44336; font-size: 0.8rem;">✗ Try Again!</div>';
           
           // Return item after delay
           setTimeout(() => {
-            draggedItem.innerHTML = draggedItem.innerHTML.replace('<div style="color: #f44336; font-size: 0.8rem;">✗ Try Again!</div>', '');
+            recycleDraggedItem.innerHTML = recycleDraggedItem.innerHTML.replace('<div style="color: #f44336; font-size: 0.8rem;">✗ Try Again!</div>', '');
           }, 1000);
         }
         
-        itemsPlaced++;
+        recycleItemsPlaced++;
         
         // Check if all items placed
-        if (itemsPlaced >= totalItems) {
-          setTimeout(endGame, 500);
+        if (recycleItemsPlaced >= recycleTotalItems) {
+          setTimeout(endRecycleGame, 500);
         }
       }
     }
 
-    // End game function
-    function endGame() {
-      clearInterval(timerInterval);
+    // End recycle game function
+    function endRecycleGame() {
+      clearInterval(recycleTimerInterval);
       
-      finalScore.textContent = score;
+      recycleFinalScore.textContent = recycleScore;
       
       // Set result message
-      if (score >= 70) {
-        resultMessage.textContent = 'Excellent! You\'re a recycling expert! 🌟';
-      } else if (score >= 40) {
-        resultMessage.textContent = 'Good job! Keep learning about recycling! 👍';
+      if (recycleScore >= 70) {
+        recycleResultMessage.textContent = 'Excellent! You\'re a recycling expert! 🌟';
+      } else if (recycleScore >= 40) {
+        recycleResultMessage.textContent = 'Good job! Keep learning about recycling! 👍';
       } else {
-        resultMessage.textContent = 'Nice try! Practice makes perfect! 💪';
+        recycleResultMessage.textContent = 'Nice try! Practice makes perfect! 💪';
       }
       
-      gameResult.style.display = 'block';
+      recycleGameResult.style.display = 'block';
     }
 
-    // Play again button
-    playAgainBtn.addEventListener('click', () => {
-      startGame();
+    // Play again button for recycle game
+    playRecycleAgainBtn.addEventListener('click', () => {
+      startRecycleGame();
+    });
+
+    // =================== PLANT GAME ===================
+    const plantGameModal = document.getElementById('plantGameModal');
+    const plantGameCard = document.getElementById('plant-game-card');
+    const closePlantGameBtn = document.getElementById('closePlantGame');
+    const plantQuestion = document.getElementById('plantQuestion');
+    const plantOptions = document.getElementById('plantOptions');
+    const plantScoreValue = document.getElementById('plantScoreValue');
+    const plantQuestionNumber = document.getElementById('plantQuestionNumber');
+    const plantGameResult = document.getElementById('plantGameResult');
+    const plantFinalScore = document.getElementById('plantFinalScore');
+    const plantResultMessage = document.getElementById('plantResultMessage');
+    const playPlantAgainBtn = document.getElementById('playPlantAgain');
+    const plantAnswerFeedback = document.getElementById('plantAnswerFeedback');
+
+    // Plant game questions data
+    const plantQuestions = [
+      {
+        question: "Which plant grows in water and has large leaves?",
+        options: [
+          { name: "Cactus", emoji: "🌵", correct: false },
+          { name: "Lily Pad", emoji: "🪷", correct: true },
+          { name: "Oak Tree", emoji: "🌳", correct: false },
+          { name: "Rose", emoji: "🌹", correct: false }
+        ]
+      },
+      {
+        question: "This plant stores water in its thick stems and survives in deserts.",
+        options: [
+          { name: "Cactus", emoji: "🌵", correct: true },
+          { name: "Fern", emoji: "🌿", correct: false },
+          { name: "Sunflower", emoji: "🌻", correct: false },
+          { name: "Bamboo", emoji: "🎋", correct: false }
+        ]
+      },
+      {
+        question: "Which plant is known for turning toward the sun?",
+        options: [
+          { name: "Sunflower", emoji: "🌻", correct: true },
+          { name: "Mushroom", emoji: "🍄", correct: false },
+          { name: "Cactus", emoji: "🌵", correct: false },
+          { name: "Pine Tree", emoji: "🌲", correct: false }
+        ]
+      },
+      {
+        question: "This plant is often found in tropical rainforests and has large, colorful flowers.",
+        options: [
+          { name: "Orchid", emoji: "🌸", correct: true },
+          { name: "Cactus", emoji: "🌵", correct: false },
+          { name: "Oak Tree", emoji: "🌳", correct: false },
+          { name: "Grass", emoji: "🌱", correct: false }
+        ]
+      },
+      {
+        question: "Which plant produces the fruit we know as 'apples'?",
+        options: [
+          { name: "Apple Tree", emoji: "🍎", correct: true },
+          { name: "Orange Tree", emoji: "🍊", correct: false },
+          { name: "Banana Tree", emoji: "🍌", correct: false },
+          { name: "Pine Tree", emoji: "🌲", correct: false }
+        ]
+      },
+      {
+        question: "This plant is fast-growing and is actually a type of grass.",
+        options: [
+          { name: "Bamboo", emoji: "🎋", correct: true },
+          { name: "Oak Tree", emoji: "🌳", correct: false },
+          { name: "Rose Bush", emoji: "🌹", correct: false },
+          { name: "Cactus", emoji: "🌵", correct: false }
+        ]
+      },
+      {
+        question: "Which plant has needle-like leaves and stays green all year?",
+        options: [
+          { name: "Pine Tree", emoji: "🌲", correct: true },
+          { name: "Oak Tree", emoji: "🌳", correct: false },
+          { name: "Maple Tree", emoji: "🍁", correct: false },
+          { name: "Palm Tree", emoji: "🌴", correct: false }
+        ]
+      },
+      {
+        question: "This plant is a vine and is often used for decoration on walls.",
+        options: [
+          { name: "Ivy", emoji: "🍃", correct: true },
+          { name: "Cactus", emoji: "🌵", correct: false },
+          { name: "Sunflower", emoji: "🌻", correct: false },
+          { name: "Rose", emoji: "🌹", correct: false }
+        ]
+      },
+      {
+        question: "Which plant produces the yellow fruit called bananas?",
+        options: [
+          { name: "Banana Tree", emoji: "🍌", correct: true },
+          { name: "Apple Tree", emoji: "🍎", correct: false },
+          { name: "Orange Tree", emoji: "🍊", correct: false },
+          { name: "Pine Tree", emoji: "🌲", correct: false }
+        ]
+      },
+      {
+        question: "This plant is known for its fragrant purple flowers and is often used in perfumes.",
+        options: [
+          { name: "Lavender", emoji: "🪻", correct: true },
+          { name: "Rose", emoji: "🌹", correct: false },
+          { name: "Sunflower", emoji: "🌻", correct: false },
+          { name: "Cactus", emoji: "🌵", correct: false }
+        ]
+      }
+    ];
+
+    let plantScore = 0;
+    let currentPlantQuestion = 0;
+    let shuffledQuestions = [];
+
+    // Open plant game modal
+    plantGameCard.addEventListener('click', () => {
+      plantGameModal.style.display = 'flex';
+      startPlantGame();
+    });
+
+    // Close plant game modal
+    closePlantGameBtn.addEventListener('click', () => {
+      plantGameModal.style.display = 'none';
+      endPlantGame();
+    });
+
+    // Close modal when clicking outside
+    plantGameModal.addEventListener('click', (e) => {
+      if (e.target === plantGameModal) {
+        plantGameModal.style.display = 'none';
+        endPlantGame();
+      }
+    });
+
+    // Start plant game function
+    function startPlantGame() {
+      plantScore = 0;
+      currentPlantQuestion = 0;
+      plantScoreValue.textContent = plantScore;
+      plantQuestionNumber.textContent = '1';
+      plantGameResult.style.display = 'none';
+      plantAnswerFeedback.style.display = 'none';
+      
+      // Shuffle questions
+      shuffledQuestions = [...plantQuestions].sort(() => Math.random() - 0.5);
+      
+      loadPlantQuestion();
+    }
+
+    // Load plant question
+    function loadPlantQuestion() {
+      plantAnswerFeedback.style.display = 'none';
+      
+      if (currentPlantQuestion >= shuffledQuestions.length) {
+        endPlantGame();
+        return;
+      }
+      
+      const question = shuffledQuestions[currentPlantQuestion];
+      plantQuestion.innerHTML = `
+        <h3>Question ${currentPlantQuestion + 1}</h3>
+        <p>${question.question}</p>
+      `;
+      
+      plantOptions.innerHTML = '';
+      
+      // Shuffle options
+      const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+      
+      shuffledOptions.forEach(option => {
+        const optionDiv = document.createElement('div');
+        optionDiv.className = 'plant-option';
+        optionDiv.dataset.correct = option.correct;
+        optionDiv.innerHTML = `
+          <div class="plant-image">${option.emoji}</div>
+          <div>${option.name}</div>
+        `;
+        
+        optionDiv.addEventListener('click', () => checkPlantAnswer(optionDiv));
+        plantOptions.appendChild(optionDiv);
+      });
+    }
+
+    // Check plant answer
+    function checkPlantAnswer(selectedOption) {
+      const isCorrect = selectedOption.dataset.correct === 'true';
+      const options = document.querySelectorAll('.plant-option');
+      
+      // Disable all options
+      options.forEach(option => {
+        option.style.pointerEvents = 'none';
+        if (option.dataset.correct === 'true') {
+          option.classList.add('correct');
+        } else if (option === selectedOption && !isCorrect) {
+          option.classList.add('incorrect');
+        }
+      });
+      
+      // Update score
+      if (isCorrect) {
+        plantScore += 10;
+        plantScoreValue.textContent = plantScore;
+        plantAnswerFeedback.innerHTML = `
+          <h3 style="color: #4CAF50;">✅ Correct!</h3>
+          <p>Great job! You selected the right plant!</p>
+        `;
+      } else {
+        plantAnswerFeedback.innerHTML = `
+          <h3 style="color: #f44336;">❌ Incorrect</h3>
+          <p>Try again next time!</p>
+        `;
+      }
+      
+      plantAnswerFeedback.style.display = 'block';
+      
+      // Move to next question after delay
+      setTimeout(() => {
+        currentPlantQuestion++;
+        plantQuestionNumber.textContent = currentPlantQuestion + 1;
+        
+        if (currentPlantQuestion < shuffledQuestions.length) {
+          loadPlantQuestion();
+        } else {
+          endPlantGame();
+        }
+      }, 1500);
+    }
+
+    // End plant game function
+    function endPlantGame() {
+      plantFinalScore.textContent = plantScore;
+      
+      // Set result message
+      if (plantScore >= 90) {
+        plantResultMessage.textContent = 'Amazing! You\'re a plant expert! 🌟';
+      } else if (plantScore >= 70) {
+        plantResultMessage.textContent = 'Great job! You know your plants well! 👍';
+      } else if (plantScore >= 50) {
+        plantResultMessage.textContent = 'Good effort! Keep learning about plants! 💪';
+      } else {
+        plantResultMessage.textContent = 'Nice try! Plants are amazing to learn about! 🌱';
+      }
+      
+      plantGameResult.style.display = 'block';
+      plantAnswerFeedback.style.display = 'none';
+    }
+
+    // Play again button for plant game
+    playPlantAgainBtn.addEventListener('click', () => {
+      startPlantGame();
     });
 
     // Initialize filter on page load
