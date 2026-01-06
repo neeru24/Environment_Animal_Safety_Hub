@@ -914,7 +914,7 @@
 }
 
 .benefit-item:hover {
-  background: var(--bg-tertiary);
+  background-color: #b5dbb6;
   transform: translateX(10px);
 }
 
@@ -939,7 +939,7 @@
 
 .benefit-text p {
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color:#104515;
   margin: 0;
   line-height: 1.5;
 }
