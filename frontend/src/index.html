@@ -1955,6 +1955,34 @@
             </li>
           </ul>
         </div>
+
+        <!-- Newsletter (Small) -->
+        <div class="footer-col footer-newsletter-col">
+          <h4>Newsletter</h4>
+          <p class="newsletter-footer-text">Stay updated with our latest news</p>
+          <div class="newsletter-footer-form">
+            <div class="newsletter-footer-input-group">
+              <input 
+                type="email" 
+                id="newsletterEmailInput"
+                class="newsletter-footer-input" 
+                placeholder="your@email.com"
+                required
+                aria-label="Email address for newsletter subscription"
+              />
+              <button 
+                type="button"
+                id="newsletterSubmitBtn"
+                class="newsletter-footer-btn"
+                aria-label="Subscribe to newsletter"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+            <div class="newsletter-footer-message" id="newsletterMessage"></div>
+          </div>
+        </div>
+
         <!-- Environment -->
         <div class="footer-col">
           <h4>Environment</h4>
@@ -2201,6 +2229,57 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
+<!-- Newsletter Form Handler -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const newsletterSubmitBtn = document.getElementById('newsletterSubmitBtn');
+    const newsletterEmailInput = document.getElementById('newsletterEmailInput');
+    const newsletterMessage = document.getElementById('newsletterMessage');
+    
+    if (newsletterSubmitBtn) {
+      newsletterSubmitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const email = newsletterEmailInput.value.trim();
+        
+        if (email) {
+          // Validate email format
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            newsletterMessage.textContent = '❌ Please enter a valid email address.';
+            newsletterMessage.className = 'newsletter-footer-message error';
+            return false;
+          }
+          
+          // Store email in localStorage (for UI-only implementation)
+          let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+          
+          if (!subscribers.includes(email)) {
+            subscribers.push(email);
+            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+            
+            // Show success message
+            newsletterMessage.textContent = 'Thank you for subscribing to our newsletter!';
+            newsletterMessage.className = 'newsletter-footer-message success';
+            newsletterEmailInput.value = '';
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+              newsletterMessage.textContent = '';
+              newsletterMessage.className = 'newsletter-footer-message';
+            }, 5000);
+          } else {
+            newsletterMessage.textContent = '📧 This email is already subscribed.';
+            newsletterMessage.className = 'newsletter-footer-message info';
+          }
+        }
+        
+        return false;
+      });
+    }
+  });
+</script>
 <script>
 /* ===== 🕊️ BIRDS ===== */
 function spawnBirds() {
