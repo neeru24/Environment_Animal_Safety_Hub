@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* =====================
+   RESET & BASE
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* =====================
+   COMMON REUSABLE UI
+   (USE EVERYWHERE)
+===================== */
+
+/* Layout helpers */
+.page {
+  min-height: 100vh;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headings & text */
+.heading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #1e7f5c;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.text-sm {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #1e7f5c;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #1e7f5c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #145c43;
+}
+
+/* Link-style buttons */
+.link-btn,
+.forgot {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #1e7f5c;
+  text-decoration: none;
+}
+
+/* Floating emoji */
+.emoji {
+  font-size: 50px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* =====================
+   AUTH PAGES
+===================== */
+.auth-body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f3d2e, #1e7f5c);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background: #fff;
+  width: 320px;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.timer {
+  margin: 10px 0;
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* =====================
+   ECO BACKGROUND
+===================== */
+#eco-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.eco-emoji {
+  position: absolute;
+  opacity: 0.22;
+  user-select: none;
+  will-change: transform;
+  filter: blur(0.3px);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 480px) {
+
+  .auth-body {
+    padding: 20px;
+  }
+
+  .auth-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+
+  .emoji {
+    font-size: 42px;
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 11px;
+  }
+
+  .btn {
+    font-size: 15px;
+    padding: 11px;
+  }
+
+  .forgot,
+  .timer,
+  .text-sm {
+    font-size: 13px;
+  }
+
+  .eco-emoji {
+    font-size: 18px !important;
+    opacity: 0.18;
+    filter: blur(0.6px);
+  }
+}
