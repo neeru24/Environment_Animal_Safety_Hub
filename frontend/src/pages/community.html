@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Environment & Animal Safety Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light theme variables */
+            --primary-color: #2e7d32;
+            --secondary-color: #388e3c;
+            --accent-color: #81c784;
+            --text-color: #333333;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --footer-bg: #1b5e20;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e0e0;
+            --input-bg: #ffffff;
+            --gradient-1: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+            --gradient-2: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+        }
+        
+        /* Dark theme variables */
+        .dark-mode {
+            --primary-color: #4caf50;
+            --secondary-color: #388e3c;
+            --accent-color: #2e7d32;
+            --text-color: #f5f5f5;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --header-bg: #1a1a1a;
+            --footer-bg: #0d1f0e;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --border-color: #333333;
+            --input-bg: #2d2d2d;
+            --gradient-1: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            --gradient-2: linear-gradient(135deg, #388e3c 0%, #2e7d32 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            font-weight: 600;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav a.active {
+            color: var(--primary-color);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        /* Hero Section */
+        .community-hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background: var(--gradient-1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .community-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .community-hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .community-hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 2.5rem;
+            max-width: 700px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            font-size: 2.2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Community Features */
+        .community-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1.2rem;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        .feature-card p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .feature-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Community Stats */
+        .community-stats {
+            background: var(--gradient-1);
+            padding: 4rem 5%;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            color: white;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .stat-item {
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Projects Showcase */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .project-header {
+            padding: 1.5rem;
+            background: var(--gradient-2);
+            color: white;
+            text-align: center;
+        }
+        
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-contributors {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .contributor-avatars {
+            display: flex;
+            margin-right: 1rem;
+        }
+        
+        .contributor-avatars span {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-left: -10px;
+            border: 2px solid var(--card-bg);
+        }
+        
+        .contributor-avatars span:first-child {
+            margin-left: 0;
+        }
+        
+        /* GitHub CTA Section */
+        .github-cta {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            margin-bottom: 5rem;
+            border: 2px solid var(--border-color);
+        }
+        
+        .github-cta h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+        }
+        
+        .github-cta p {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .github-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #333;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .github-button:hover {
+            background-color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .github-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .github-stat {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            min-width: 160px;
+        }
+        
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        .event-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        
+        .event-header {
+            padding: 1.5rem;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+        
+        .event-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-date {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-content {
+            padding: 1.8rem;
+        }
+        
+        .event-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .event-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1400px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .community-hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .community-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .github-stats {
+                gap: 1rem;
+            }
+            
+            .github-stat {
+                min-width: 140px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .community-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .community-hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button, .github-button {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .feature-card, .project-card, .event-card {
+                padding: 1.8rem 1.5rem;
+            }
+            
+            .container {
+                padding: 3rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>Environment & <span>Animal Safety Hub</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="community.html" class="active">Community</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Community Hero Section -->
+    <section class="community-hero">
+        <div class="hero-content">
+            <h2>Welcome to Our Community</h2>
+            <p>Join thousands of passionate individuals working together to protect our planet and its animals. Collaborate, learn, and make a difference with us.</p>
+            <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="cta-button">
+                <i class="fab fa-github"></i> Join Now on GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <!-- Community Features -->
+        <section class="community-section">
+            <h2 class="section-title">What Our Community Offers</h2>
+            <p class="section-subtitle">Be part of a dynamic network of environmentalists and animal welfare advocates working towards a sustainable future.</p>
+            
+            <div class="community-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Collaborative Projects</h3>
+                    <p>Work with community members on real-world environmental initiatives. From local cleanups to wildlife conservation programs.</p>
+                    <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="feature-link">
+                        View Projects <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Share Knowledge</h3>
+                    <p>Exchange ideas, research, and solutions with experts and enthusiasts in environmental science and animal welfare.</p>
+                    <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="feature-link">
+                        Contribute <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Events & Campaigns</h3>
+                    <p>Participate in online workshops, local events, and global campaigns focused on environmental and animal protection.</p>
+                    <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="feature-link">
+                        Join Events <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Stats -->
+        <section class="community-stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">2,500+</span>
+                    <span class="stat-label">Community Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Active Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">45</span>
+                    <span class="stat-label">Countries Represented</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Events Hosted</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="community-section">
+            <h2 class="section-title">Featured Community Projects</h2>
+            <p class="section-subtitle">Check out some of the impactful projects our community members are working on right now.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-tag">Wildlife Conservation</span>
+                        <h3>Urban Wildlife Corridors</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Creating safe passages for wildlife in urban areas to reduce human-animal conflicts and preserve biodiversity.</p>
+                        <div class="project-contributors">
+                            <div class="contributor-avatars">
+                                <span>MJ</span>
+                                <span>AR</span>
+                                <span>SK</span>
+                                <span>+5</span>
+                            </div>
+                            <div class="contributor-count">8 contributors</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-tag">Plastic Reduction</span>
+                        <h3>Zero Waste Communities</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Developing and implementing zero-waste strategies for local communities to dramatically reduce plastic pollution.</p>
+                        <div class="project-contributors">
+                            <div class="contributor-avatars">
+                                <span>TP</span>
+                                <span>LG</span>
+                                <span>+7</span>
+                            </div>
+                            <div class="contributor-count">9 contributors</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-tag">Education</span>
+                        <h3>Eco-Literacy Program</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>Creating environmental education materials for schools to foster the next generation of eco-conscious citizens.</p>
+                        <div class="project-contributors">
+                            <div class="contributor-avatars">
+                                <span>RD</span>
+                                <span>KM</span>
+                                <span>JS</span>
+                                <span>+9</span>
+                            </div>
+                            <div class="contributor-count">12 contributors</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub CTA Section -->
+        <section class="github-cta">
+            <h2>Join Our Open-Source Community</h2>
+            <p>All our projects, resources, and collaborations happen on GitHub. Join us to contribute to environmental and animal safety initiatives, collaborate with like-minded individuals, and make a real impact.</p>
+            
+            <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="github-button">
+                <i class="fab fa-github"></i> Visit Our GitHub Repository
+            </a>
+            
+            <div class="github-stats">
+                <div class="github-stat">
+                    <i class="fas fa-code-branch"></i>
+                    <div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Repositories</div>
+                    </div>
+                </div>
+                <div class="github-stat">
+                    <i class="fas fa-users"></i>
+                    <div>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Contributors</div>
+                    </div>
+                </div>
+                <div class="github-stat">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Stars</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section class="community-section">
+            <h2 class="section-title">Upcoming Community Events</h2>
+            <p class="section-subtitle">Join our upcoming virtual and in-person events to connect with the community.</p>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-date">June 25, 2023</span>
+                        <h3>Virtual Workshop: Sustainable Living</h3>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-details">
+                            <i class="fas fa-clock"></i>
+                            <span>3:00 PM - 5:00 PM GMT</span>
+                        </div>
+                        <div class="event-details">
+                            <i class="fas fa-video"></i>
+                            <span>Online (Zoom)</span>
+                        </div>
+                        <p>Learn practical tips for reducing your environmental footprint in daily life. Interactive session with Q&A.</p>
+                        <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="event-link">
+                            Join Event <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-date">July 8, 2023</span>
+                        <h3>Beach Cleanup Challenge</h3>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-details">
+                            <i class="fas fa-clock"></i>
+                            <span>9:00 AM - 12:00 PM Local Time</span>
+                        </div>
+                        <div class="event-details">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Multiple Locations Worldwide</span>
+                        </div>
+                        <p>Join community members in your area for a beach cleanup. Connect locally while making a global impact.</p>
+                        <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="event-link">
+                            Find Location <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-date">July 15, 2023</span>
+                        <h3>Wildlife Photography Contest</h3>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-details">
+                            <i class="fas fa-clock"></i>
+                            <span>Submission Deadline</span>
+                        </div>
+                        <div class="event-details">
+                            <i class="fas fa-trophy"></i>
+                            <span>Eco-friendly Prizes</span>
+                        </div>
+                        <p>Submit your best wildlife photos that highlight animal conservation. Winners featured in our community gallery.</p>
+                        <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" class="event-link">
+                            Submit Entry <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Environment & Animal Safety Hub</h3>
+                <p>Dedicated to protecting our planet and its inhabitants through education, advocacy, and community action.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="resources.html">Resources</a></p>
+                <p><a href="community.html">Community</a></p>
+                <p><a href="contact.html">Contact</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Get Involved</h3>
+                <p><a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank">Contribute on GitHub</a></p>
+                <p><a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank">Join a Project</a></p>
+                <p><a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank">Report an Issue</a></p>
+                <p><a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank">Suggest a Feature</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Environment & Animal Safety Hub. All rights reserved. | Open Source on <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" style="color: #81c784;">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme or prefer-color-scheme
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Animate stats counter
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    }
+                }, 30);
+            });
+        }
+        
+        // Trigger stats animation when in viewport
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.community-stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+        
+        // Update current year in footer
+        document.querySelector('.footer-bottom p').innerHTML = `&copy; ${new Date().getFullYear()} Environment & Animal Safety Hub. All rights reserved. | Open Source on <a href="https://github.com/Jagrati3/Environment_Animal_Safety_Hub" target="_blank" style="color: #81c784;">GitHub</a>`;
+    </script>
+</body>
+</html>
