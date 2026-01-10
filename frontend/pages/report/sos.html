@@ -17,9 +17,22 @@
     <link rel="stylesheet" href="../../css/pages/sos.css">
 
     <link rel="stylesheet" href="../../css/components/footer.css" />
+
+    
+    <link rel="stylesheet" href="../../css/global/variables.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/card.css" />
+    <link rel="stylesheet" href="../../css/components/footer.css" />
+    <link rel="stylesheet" href="../../css/components/Login_SignUp.css" />
 </head>
 
 <body>
+    <nav>
+            <div>
+                <div id="navbar-container"></div>
+                <script src="../../js/components/navbar-loader.js"></script>
+            </div>
+    </nav>
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <i class="fas fa-moon"></i>
@@ -146,9 +159,11 @@
     <script>
         (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "ws110ZzXAkEnbVsIy9g8d"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
     </script>
-<!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
-<script src="../js/components/footer-loader.js"></script>
+
+    <div>
+        <div id="footer-placeholder"></div>
+        <script src="../../js/components/footer-loader.js"></script>
+    </div>
 </body>
 
 </html>

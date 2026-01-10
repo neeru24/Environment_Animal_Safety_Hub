@@ -434,3 +434,155 @@ body {
         padding: 0;
     }
 }
+
+
+
+
+
+
+
+
+/* <!-- Theme Toggle CSS --> */
+
+/* Theme Variables */
+:root {
+    /* Light Theme (Default) */
+    --primary: #10b981;
+    --primary-dark: #0ea271;
+    --primary-light: #34d399;
+    --secondary: #3b82f6;
+    --accent: #8b5cf6;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f9fafb;
+    --bg-light: #ffffff;
+    --bg-card: #ffffff;
+    --border: #e5e7eb;
+    --shadow: rgba(0, 0, 0, 0.08);
+    --shadow-heavy: rgba(0, 0, 0, 0.15);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+.dark-theme {
+    /* Dark Theme */
+    --primary: #10b981;
+    --primary-dark: #0ea271;
+    --primary-light: #34d399;
+    --secondary: #60a5fa;
+    --accent: #a78bfa;
+    --text: #f3f4f6;
+    --text-light: #9ca3af;
+    --bg: #111827;
+    --bg-light: #1f2937;
+    --bg-card: #1f2937;
+    --border: #374151;
+    --shadow: rgba(0, 0, 0, 0.25);
+    --shadow-heavy: rgba(0, 0, 0, 0.4);
+    --success: #10b981;
+    --warning: #fbbf24;
+    --danger: #f87171;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px var(--shadow-heavy);
+}
+
+.theme-toggle i {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .fa-moon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.theme-toggle .fa-sun {
+    opacity: 0;
+    transform: rotate(180deg);
+}
+
+.theme-toggle.dark .fa-moon {
+    opacity: 0;
+    transform: rotate(-180deg);
+}
+
+.theme-toggle.dark .fa-sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Base dark theme styles */
+body.dark-theme {
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+body.dark-theme .page-top {
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border);
+}
+
+body.dark-theme .back-btn {
+    color: var(--text);
+    background: var(--bg-card);
+}
+
+body.dark-theme .garden-hero {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg) 100%);
+}
+
+body.dark-theme .garden-benefits {
+    background: var(--bg);
+}
+
+body.dark-theme .benefit-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+}
+
+body.dark-theme .garden-form-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-card) 100%);
+}
+
+body.dark-theme .form-container {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+}
+
+body.dark-theme input,
+body.dark-theme select,
+body.dark-theme textarea {
+    background: var(--bg-card);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+body.dark-theme .eco-footer {
+    background: var(--bg-light);
+    border-top: 1px solid var(--border);
+}

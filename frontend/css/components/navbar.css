@@ -54,6 +54,7 @@
   align-items: center;
   gap: 4px;
   order: 2;
+  list-style: none;
 }
 
 .nav-link {
@@ -71,6 +72,7 @@
   align-items: center;
   gap: 5px;
   /* Space between text and icon */
+ 
 }
 
 .nav-link::after {

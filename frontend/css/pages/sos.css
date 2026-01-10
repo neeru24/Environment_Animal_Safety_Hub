@@ -51,9 +51,14 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
-  padding: 20px;
+ 
   transition: var(--transition);
 }
+
+header{
+    margin-top: 80px;
+    
+  }
 
 /* ============================
    THEME TOGGLE
@@ -97,10 +102,13 @@ body {
 ============================ */
 .hero.enhanced-hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 85vh;
   border-radius: 25px;
   overflow: hidden;
   margin-bottom: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 90px;
 
   background:
     linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)),

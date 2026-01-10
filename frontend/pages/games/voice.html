@@ -1,53 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voice Echo 🎤🗣️</title>
-<link rel="stylesheet" href="../../css/pages/games/voice.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Echo 🎤🗣️</title>
+  <link rel="stylesheet" href="../../css/pages/games/voice.css">
 
+  <link rel="stylesheet" href="../../css/global/variables.css" />
+  <link rel="stylesheet" href="../../css/components/navbar.css" />
+  <link rel="stylesheet" href="../../css/components/card.css" />
   <link rel="stylesheet" href="../../css/components/footer.css" />
+  <link rel="stylesheet" href="../../css/components/Login_SignUp.css" />
+
 </head>
+
 <body>
-<!-- HEADER -->
-<header class="top-header">
-  <button class="back-btn" onclick="history.back()">⬅ Back</button>
-
-  <div class="title-box">
-    <h1>Voice Echo 🎤🗣️</h1>
-    <p>Listen, repeat, and learn eco-friendly words</p>
+  <div>
+    <div id="navbar-container"></div>
+    <script src="../../js/components/navbar-loader.js"></script>
   </div>
-</header>
 
-<!-- MAIN CONTENT -->
-<main class="game-area">
+  <div></div>
+  <header class="top-header">
 
-  <!-- LEFT PANEL -->
-  <section class="panel left-panel">
-    <div class="word-card">
-      <span id="eco-word">🌱 Recycle</span>
-    </div>
+      <div class="title-box">
+        <h1>Voice Echo 🎤🗣️</h1>
+        <p>Listen, repeat, and learn eco-friendly words</p>
+      </div>
 
-    <button id="play-btn" class="action-btn">▶️ Play Word</button>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="game-area">
+    
+
+    <!-- LEFT PANEL -->
+    <section class="panel left-panel">
+      <div class="word-card">
+        <span id="eco-word">🌱 Recycle</span>
+      </div>
+
+      <button id="play-btn" class="action-btn">▶️ Play Word</button>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="panel right-panel">
+      <button id="record-btn" class="record-btn">🎤 Start Recording</button>
+
+      <div class="speech-box">
+        <p class="label">You said:</p>
+        <p id="spoken-text">—</p>
+      </div>
+
+      <div id="feedback"></div>
+    </section>
+
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+    <script src="../../js/components/footer-loader.js"></script>
+
+  </main>
+  <section>
+
   </section>
+  <script src="../../js/pages/games/voice.js"></script>
 
-  <!-- RIGHT PANEL -->
-  <section class="panel right-panel">
-    <button id="record-btn" class="record-btn">🎤 Start Recording</button>
 
-    <div class="speech-box">
-      <p class="label">You said:</p>
-      <p id="spoken-text">—</p>
-    </div>
 
-    <div id="feedback"></div>
-  </section>
 
-</main>
-
-<script src="../../js/pages/voice.js"></script>
-<!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
-<script src="../../js/components/footer-loader.js"></script>
 </body>
+
 </html>

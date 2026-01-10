@@ -742,3 +742,271 @@ body.js-loaded .reveal.active {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+
+
+ 
+
+    /* ===========================
+       ENHANCED THEME TOGGLE
+       =========================== */
+    .theme-toggle-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .theme-toggle-btn {
+        background: linear-gradient(135deg, #4caf50, #2e7d32);
+        border: none;
+        border-radius: 50px;
+        width: 70px;
+        height: 35px;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 5px 20px rgba(46, 125, 50, 0.3);
+        overflow: hidden;
+    }
+
+    .theme-toggle-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+    }
+
+    .toggle-track {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #4caf50, #2e7d32);
+        border-radius: 50px;
+    }
+
+    .toggle-slider {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 29px;
+        height: 29px;
+        background: white;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #2e7d32;
+        font-size: 14px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+
+    .toggle-icons {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .toggle-icons i {
+        color: white;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+    .theme-label {
+        background: rgba(255, 255, 255, 0.9);
+        color: #2e7d32;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+
+    .theme-toggle-container:hover .theme-label {
+        display: block;
+    }
+
+    /* Dark Mode Active State */
+    body.dark-mode .toggle-slider {
+        transform: translateX(35px);
+        background: #ffd54f;
+        color: #2e3a59;
+    }
+
+    body.dark-mode .toggle-track {
+        background: linear-gradient(135deg, #2c3e50, #1a252f);
+    }
+
+    body.dark-mode .toggle-icons i {
+        color: #ffd54f;
+    }
+
+    /* ===========================
+       ENHANCED DARK THEME STYLES
+       =========================== */
+    body.dark-mode {
+        background: radial-gradient(circle at top, #0f172a, #1e293b);
+        color: #e2e8f0;
+    }
+
+    body.dark-mode .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+                    url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+    }
+
+    body.dark-mode .hero-badge {
+        background: rgba(76, 175, 80, 0.3);
+        color: #a7f3d0;
+    }
+
+    body.dark-mode .hero h1 .glow {
+        color: #86efac;
+        text-shadow: 0 0 20px rgba(134, 239, 172, 0.7);
+    }
+
+    body.dark-mode .hero-sub {
+        color: #cbd5e1;
+    }
+
+    body.dark-mode .btn-primary {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+    }
+
+    body.dark-mode .card,
+    body.dark-mode .info-card,
+    body.dark-mode .admin-card,
+    body.dark-mode .contributor,
+    body.dark-mode .contact-card {
+        background: #1e293b;
+        color: #e2e8f0;
+        border-color: #10b981;
+    }
+
+    body.dark-mode .info-card i,
+    body.dark-mode .contact-card i,
+    body.dark-mode .social-icons a {
+        color: #10b981;
+    }
+
+    body.dark-mode .section-title {
+        color: #86efac;
+    }
+
+    body.dark-mode .team-intro {
+        color: #e2e8f0;
+    }
+
+    body.dark-mode .team-intro h2 {
+        color: #f1f5f9;
+    }
+
+    body.dark-mode .team-intro p {
+        color: #cbd5e1;
+    }
+
+    body.dark-mode .team-intro .tag {
+        background: rgba(16, 185, 129, 0.2);
+        color: #86efac;
+    }
+
+    body.dark-mode .stat .number {
+        color: #86efac;
+    }
+
+    body.dark-mode .stat .label {
+        color: #94a3b8;
+    }
+
+    body.dark-mode .back-btn {
+        background: rgba(30, 41, 59, 0.95);
+        color: #86efac;
+    }
+
+    body.dark-mode .github-btn {
+        background-color: #374151;
+    }
+
+    body.dark-mode .github-btn:hover {
+        background: #059669;
+    }
+
+    body.dark-mode .admin-links a {
+        color: #86efac;
+    }
+
+    body.dark-mode .contact-card a {
+        color: #34d399;
+    }
+
+    body.dark-mode .social-icons a:hover {
+        color: #34d399;
+    }
+
+    body.dark-mode .masthead-footer {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+        color: #e2e8f0;
+    }
+
+    body.dark-mode .footer-section h3,
+    body.dark-mode .footer-section h4 {
+        color: #86efac;
+    }
+
+    body.dark-mode .footer-section p {
+        color: #cbd5e1;
+    }
+
+    body.dark-mode .footer-links a {
+        color: #94a3b8;
+    }
+
+    body.dark-mode .footer-links a:hover {
+        color: #86efac;
+    }
+
+    body.dark-mode .footer-social a {
+        color: #94a3b8;
+    }
+
+    body.dark-mode .footer-social a:hover {
+        color: #86efac;
+    }
+
+    body.dark-mode .footer-bottom {
+        background: #0f172a;
+        color: #94a3b8;
+    }
+
+    body.dark-mode .footer-bottom strong {
+        color: #86efac;
+    }
+
+    body.dark-mode #backToTop {
+        background: #10b981;
+    }
+
+    body.dark-mode #backToTop:hover {
+        background: #059669;
+    }
+
+    /* Smooth transition for theme change */
+    body,
+    body * {
+        transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    border-color 0.3s ease;
+    }
+ 
