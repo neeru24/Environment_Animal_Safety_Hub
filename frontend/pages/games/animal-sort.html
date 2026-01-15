@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animal Sorting Game</title>
+  <link rel="stylesheet" href="../../css/pages/games/animal-sort.css" />
+  <link rel="icon" type="image/png" href="/envirnoment-logo.png">
+
+  <link rel="stylesheet" href="../../css/components/footer.css" />
+  <link rel="stylesheet" href="../../css/components/navbar.css" />
+</head>
+<body>
+
+  <div id="cursor-container"></div>
+<script src="../../js/components/loadComponents.js"></script>
+
+
+  <div id="navbar-container"></div>
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <button class="back-btn" onclick="goBack()">⬅</button>
+    <h1 class="title">🐾 Animal Sorting Game</h1>
+    <div class="timer">⏰ <span id="time">01:00</span></div>
+  </div>
+
+  <p class="description">
+    Drag the animal to the correct diet category! Learn about Herbivores, Carnivores, and Omnivores in a fun and interactive way.
+  </p>
+
+  <!-- Animal Name -->
+  <h2 class="animal-name" id="animalName"></h2>
+
+  <!-- Game -->
+  <div class="game">
+    <!-- Animal -->
+    <div class="animal-area">
+      <div id="animal" class="animal" draggable="true">🐶</div>
+    </div>
+
+    <!-- Boxes -->
+    <div class="boxes">
+      <div class="box herb" data-type="herb">🌱 Herbivore</div>
+      <div class="box omni" data-type="omni">🍎 Omnivore</div>
+      <div class="box carn" data-type="carn">🍖 Carnivore</div>
+    </div>
+  </div>
+
+  <!-- Game Over Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2>🎉 Game Over</h2>
+      <p>✅ Correct: <span id="correctCount">0</span></p>
+      <p>❌ Wrong: <span id="wrongCount">0</span></p>
+      <button onclick="restart()">🔄 Play Again</button>
+      <button onclick="goBack()">🚪 Exit</button>
+    </div>
+  </div>
+    <!-- Sounds -->
+    <audio id="correctSound" src="../../assets/audio/clap.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="../../assets/audio/wrong.mp3" preload="auto"></audio>
+
+    <script src="../../js/pages/games/animal-sort.js"></script>
+    <script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+<!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+<script src="/frontend/js/components/footer-loader.js"></script>
+
+    <script src="../../js/components/navbar-loader.js"></script>
+</body>
+</html>

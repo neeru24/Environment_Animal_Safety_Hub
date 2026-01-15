@@ -65,9 +65,9 @@ activities through education and quizzes.
 
 ## 📸 UI Preview
 
-![alt text](IMG_1.png)
-![alt text](IMG_2.png)  
-![alt text](IMG_3.png)
+![alt text](frontend/src/assets/images/Readme/IMG_1.png)
+![alt text](frontend/src/assets/images/Readme/IMG_2.png)  
+![alt text](frontend/src/assets/images/Readme/IMG_3.png)
 
 ---
 

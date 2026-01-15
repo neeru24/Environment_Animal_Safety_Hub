@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoLife Kids Zone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/envirnoment-logo.png">
+  
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../css/pages/games/kids-zone.css" />
+  <link rel="stylesheet" href="../../css/components/footer.css" />
+
+
+  <link rel="stylesheet" href="../../css/global/variables.css" />
+    <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <link rel="stylesheet" href="../../css/components/card.css" />
+    <link rel="stylesheet" href="../../css/components/footer.css" />
+    <link rel="stylesheet" href="../../css/components/Login_SignUp.css" />
+</head>
+<body>
+
+  <div id="cursor-container"></div>
+<script src="../../js/components/loadComponents.js"></script>
+
+
+  <!-- Background Particles -->
+  <div class="bg-particles" id="particles"></div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <!-- Breadcrumb -->
+  <nav>
+    <div>
+    <div id="navbar-container"></div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="page-header">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../../index.html">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+        <span>/</span>
+        <span>Kids Zone</span>
+      </nav>
+    <div class="header-content">
+      <h1>🌱 EcoLife Kids Zone</h1>
+      <p class="tagline">Where learning meets fun, and sustainability becomes a game!</p>
+    </div>
+  </header>
+
+  <!-- Games Dashboard -->
+  <section class="games-grid">
+    <h2 style="text-align: center;"style="text-align: center;">Learning Adventure</h2>
+    <div class="learning-section">
+      <!-- Learning 1 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">📘</div>
+        <h3 class="card-title">Kids Learning Hub</h3>
+        <p class="card-description">Interactive eco-lessons with animated stories and amazing fun facts about nature!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../environment/kids-learning.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+      <!-- Learning 2 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">♻️</div>
+        <h3 class="card-title">Waste Segregation</h3>
+        <p class="card-description">Learn how to properly sort recyclables, compost, and trash to reduce environmental impact!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 60%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../environment/waste-segregation.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+      <!-- Learning 3 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">🍂</div>
+        <h3 class="card-title">Dry Waste Awareness</h3>
+        <p class="card-description">Learn about Dry Waste and its impact on our environment!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>40%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 40%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../environment/dry-waste-awareness.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+      <!-- Learning 4 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">🌤️☁</div>
+        <h3 class="card-title">Climate Awareness</h3>
+        <p class="card-description">Learn about Climate Change and its impact on our environment!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>70%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 70%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../environment/climate-awareness.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+       <!-- Learning 5 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">🍽️</div>
+        <h3 class="card-title">Feeding Awareness</h3>
+        <p class="card-description">Learn about proper feeding practices and their impact on our environment!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>50%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 50%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../feeding.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+       <!-- Learning 5 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">💯</div>
+        <h3 class="card-title">Myth Vs Fact</h3>
+        <p class="card-description">Break environmental myths • Learn the real truth!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>20%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 20%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../myth-vs-fact.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+            <!-- Learning 5 -->
+      <div class="game-card animate-card" style="animation-delay: 0.3s">
+        <div class="card-emoji">🦁🏕️🌿</div>
+        <h3 class="card-title">WildLife Conservation</h3>
+        <p class="card-description">Learn about protecting wildlife and their habitats!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Completion</span>
+            <span>10%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 10%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-users"></i>
+            <span>All Ages</span>
+          </div>
+          <a href="../environment/wildlife.html" class="play-btn">
+            <i class="fas fa-compass"></i>
+            Explore
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="text-align: center;">Quiz Challenges</h2>
+    <div class="quiz-section">
+      <!-- quiz 1 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🧠</div>
+        <h3 class="card-title">Eco Quiz Challenge</h3>
+        <p class="card-description">Test your environmental knowledge with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>75%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="../quizzes/quiz.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+        <!-- quiz 2 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">☁️</div>
+        <h3 class="card-title">Climate Change Quiz Challenge</h3>
+        <p class="card-description">Test your knowledge about climate change with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="../quizzes/climate-change-quiz.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+        <!-- quiz 3 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🐻</div>
+        <h3 class="card-title">Animal Safety Quiz Challenge</h3>
+        <p class="card-description">Test your knowledge about animal safety with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>60%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./animal-safety-scenario-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+        <!-- quiz 4 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🌍</div>
+        <h3 class="card-title">Environment Awareness Quiz Challenge</h3>
+        <p class="card-description">Test your knowledge about environment awareness with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>45%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="../quizzes/environment-awareness-quiz.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+        <!-- quiz 5 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🌳</div>
+        <h3 class="card-title">Plant Care Quiz Challenge</h3>
+        <p class="card-description">Test your knowledge about plant care with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>45%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="../quizzes/plant-care-quiz.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+        <!-- quiz 1 -->
+      <div class="game-card animate-card" style="animation-delay: 0.1s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🗑️</div>
+        <h3 class="card-title">Waste Management Quiz Challenge</h3>
+        <p class="card-description">Test your knowledge about waste management with exciting quizzes and earn green badges!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Popularity</span>
+            <span>80%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="../quizzes/waste-management-quiz.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <h2 style="text-align: center;">Fun Games</h2>
+    <div class="game-section">
+      <!-- Game 1  -->
+      <div class="game-card animate-card" style="animation-delay: 0.2s">
+        <span class="card-badge badge-popular">Popular</span>
+        <div class="card-emoji">♻️</div>
+        <h3 class="card-title">Waste Sorting Game</h3>
+        <p class="card-description">Drag & drop waste into correct bins. Master recycling through interactive gameplay!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Mastery</span>
+            <span>85%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 5+</span>
+          </div>
+          <a href="./waste-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 2 -->
+      <div class="game-card animate-card" style="animation-delay: 0.4s">
+        <span class="card-badge badge-hot">Hot</span>
+        <div class="card-emoji">🌳🍂</div>
+        <h3 class="card-title">Tree Explorer</h3>
+        <p class="card-description">Identify trees by matching leaves. Become a certified nature expert!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Progress</span>
+            <span>45%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 45%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 7+</span>
+          </div>
+          <a href="./tree-explore.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+       <!-- Game 3 -->
+      <div class="game-card animate-card" style="animation-delay: 0.5s">
+        <div class="card-emoji">🧩🌍</div>
+        <h3 class="card-title">Eco Puzzle Adventure</h3>
+        <p class="card-description">Solve beautiful jigsaw puzzles featuring forests, oceans, and amazing wildlife!</p>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 4+</span>
+          </div>
+          <a href="./puzzle.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 4 -->
+      <div class="game-card animate-card" style="animation-delay: 0.6s">
+        <div class="card-emoji">🐶🐱🦁🦉</div>
+        <h3 class="card-title">Animal Sort Challenge</h3>
+        <p class="card-description">Classify animals by habitat, diet, or type. Learn zoology through fun games!</p>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./animal-sort.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Game 5 - VOICE ECHO GAME (Now Playable) -->
+      <div class="game-card animate-card" style="animation-delay: 0.7s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">🎤🗣️</div>
+        <h3 class="card-title">Voice Echo Game</h3>
+        <p class="card-description">Repeat eco-words aloud! Fun pronunciation & memory training for young learners.</p>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 3+</span>
+          </div>
+          <a href="./voice.html" class="play-btn">
+            <i class="fas fa-microphone"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Game 6 -->
+      <div class="game-card animate-card" style="animation-delay: 0.8s">
+        <span class="card-badge badge-hot">Trending</span>
+        <div class="card-emoji">🌱🌳</div>
+        <h3 class="card-title">Plant & Grow Adventure</h3>
+        <p class="card-description">Plant virtual seeds, water them daily, and watch your green world blossom!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Growth</span>
+            <span>90%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 5+</span>
+          </div>
+          <a href="./plant-adventure.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Game 7 - eco builder -->
+      <div class="game-card animate-card" style="animation-delay: 1.0s">
+        <!-- <span class="card-badge badge-simulation">L3 Simulation</span> -->
+        <div class="card-emoji">🌿🦊</div>
+        <h3 class="card-title">Eco-System Builder</h3>
+        <p class="card-description">Create a self-sustaining world. Watch animals hunt, graze, and interact in real-time!</p>
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Biological Balance</span>
+            <span>100%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 100%; background: linear-gradient(90deg, #00ff87, #60efff);"></div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-vial"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./eco-builder.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 8 - eco builder -->
+      <div class="game-card animate-card" style="animation-delay: 1.0s">
+        <span class="card-badge badge-new">New</span>
+        <div class="card-emoji">♻️🧠</div>
+        <h3 class="card-title">Recycle Sort Memory</h3>
+        <p class="card-description">Match the waste items with their correct recycling bins to clean up the park!</p>
+        
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Accuracy</span>
+            <span>0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%; background: linear-gradient(90deg, #4CAF50, #8BC34A);"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-brain"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./recycle-memory.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Game 9 - Green-City -->
+      <div class="game-card animate-card" style="animation-delay: 0.8s">
+        <span class="card-badge badge-hot">Hot</span>
+        <div class="card-emoji">🏙️🌲☀️</div>
+        <h3 class="card-title">Green City Planner</h3>
+        <p class="card-description">Build a sustainable metropolis! Balance energy needs against carbon footprint in this 5x5 strategy grid.</p>
+        
+        <div class="sustainability-mini-hud" style="margin: 10px 0;">
+          <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">Sustainability Score</div>
+          <div style="height: 6px; background: rgba(0,0,0,0.3); border-radius: 3px; margin-top: 4px; overflow: hidden;">
+            <div id="dashboardScoreBar" style="width: 0%; height: 100%; background: #00ff88; transition: width 1s;"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-brain"></i>
+            <span>Age 8+</span>
+          </div>
+          <a href="./green-city.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Game 10 - Carbon Race -->
+      <div class="game-card animate-card" style="animation-delay: 0.9s">
+        <span class="card-badge badge-hot">Trending</span>
+        <div class="card-emoji">🏃‍♂️🏁</div>
+        <h3 class="card-title">Eco-Runner: Carbon Race</h3>
+        <p class="card-description">Race against time, answer eco-trivia, and reduce your carbon footprint to save the planet!</p>
+        
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Eco-Score</span>
+            <span>20%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 20%; background: linear-gradient(90deg, #00FF87, #60EFFF);"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-leaf"></i>
+            <span>Eco-Friendly</span>
+          </div>
+          <a href="./carbon-race.html" class="play-btn">
+            <i class="fas fa-play-circle"></i> Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 11 - Memory Card Flip -->
+      <div class="game-card animate-card" style="animation-delay: 0.9s">
+        <span class="card-badge badge-hot">Trending</span>
+        <div class="card-emoji">🧠</div>
+        <h3 class="card-title">Memory Card Flip</h3>
+        <p class="card-description">Flip cards to match eco-friendly words and learn!</p>
+        
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Memory game</span>
+            <span>50%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 20%; background: linear-gradient(90deg, #00FF87, #60EFFF);"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-leaf"></i>
+            <span>Memory Game</span>
+          </div>
+          <a href="./memory-card-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i> Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 12 - Climate -->
+      <div class="game-card animate-card" style="animation-delay: 0.9s">
+        <span class="card-badge badge-hot">Trending</span>
+        <div class="card-emoji">🌡️</div>
+        <h3 class="card-title">Climate Challenge</h3>
+        <p class="card-description">Climate Action Game!</p>
+        
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Climate game</span>
+            <span>40%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 20%; background: linear-gradient(90deg, #00FF87, #60EFFF);"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-leaf"></i>
+            <span>Climate Game</span>
+          </div>
+          <a href="./climate-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i> Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 13 - Eco Card Quest -->
+      <div class="game-card animate-card" style="animation-delay: 0.9s">
+        <span class="card-badge badge-hot">Trending</span>
+        <div class="card-emoji">🍃</div>
+        <h3 class="card-title">Eco Card Quest</h3>
+        <p class="card-description">Collect eco-cards and learn about sustainable living!</p>
+        
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Eco-Score</span>
+            <span>30%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 20%; background: linear-gradient(90deg, #00FF87, #60EFFF);"></div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-leaf"></i>
+            <span>Eco-Friendly</span>
+          </div>
+          <a href="./MatchIssueSolutionGame.html" class="play-btn">
+            <i class="fas fa-play-circle"></i> Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 14 -->
+      <div class="game-card animate-card" style="animation-delay: 0.6s">
+        <div class="card-emoji">🍃🌍💚</div>
+        <h3 class="card-title">Environment Safety Game</h3>
+        <p class="card-description">Environment Safety Game - Your Environmental Impact Matters!</p>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./environment-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+      <!-- Game 15 -->
+      <div class="game-card animate-card" style="animation-delay: 0.6s">
+        <div class="card-emoji">🚢🆘🚨</div>
+        <h3 class="card-title">Rescue Game</h3>
+        <p class="card-description">Rescue the animals and earn many points!</p>
+        <div class="card-footer">
+          <div class="age-indicator">
+            <i class="fas fa-child"></i>
+            <span>Age 6+</span>
+          </div>
+          <a href="./rescure-game.html" class="play-btn">
+            <i class="fas fa-play-circle"></i>
+            Play Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../../js/pages/games/kids-zone.js"></script>
+
+  <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+ <script src="/frontend/js/components/footer-loader.js"></script>
+
+
+
+  <script src="../../js/components/navbar-loader.js"></script>
+</body>
+</html>

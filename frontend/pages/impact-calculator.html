@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Impact Calculator | EcoLife</title>
+    <link rel="icon" type="image/png" href="../assets/images/others/FAVICON.png">
+    <link rel="icon" type="image/png" href="/envirnoment-logo.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components/navbar.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/pages/impact-calculator.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Theme Variables -->
+    <style>
+        :root {
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --primary-color: #2e7d32;
+            --primary-light: #4caf50;
+            --card-bg: #ffffff;
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark-theme {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --primary-color: #4caf50;
+            --primary-light: #66bb6a;
+            --card-bg: #2d2d2d;
+            --border-color: #404040;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .theme-btn:hover {
+            transform: rotate(30deg) scale(1.1);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+        
+        /* Fix for navbar blurry issue */
+        #navbar-container {
+            position: relative;
+            z-index: 100;
+            backdrop-filter: none !important;
+        }
+        
+        #navbar-container * {
+            backdrop-filter: none !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="theme-toggle">
+        <button class="theme-btn" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div id="cursor-container"></div>
+    <script src="../../js/components/loadComponents.js"></script>
+
+    <div id="navbar-container"></div>
+    
+
+    <!-- Hero Section -->
+    <section class="calculator-hero">
+        <div class="section-container">
+            <div class="hero-card fade-up">
+                <span class="section-tag fade-up delay-1">
+                    <i class="fa-solid fa-calculator"></i> Impact Calculator
+                </span>
+
+                <h1 class="section-title fade-up delay-2">
+                    Know Your Environmental Impact
+                </h1>
+
+                <p class="section-subtitle fade-up delay-3">
+                    Discover your carbon footprint and get personalized tips to live greener 🌱
+                </p>
+
+                <div class="hero-actions fade-up delay-3">
+                    <button class="btn btn-primary btn-xl pulse" id="startCalculatorBtn">
+                        <i class="fa-solid fa-play"></i> Calculate Now
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Eco Elements -->
+        <div class="eco-float leaf-1">🍃</div>
+        <div class="eco-float leaf-2">🌱</div>
+        <div class="eco-float leaf-3">🌍</div>
+        <div class="eco-float leaf-4">🍀</div>
+        <div class="eco-float leaf-5">🌿</div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="section-container">
+            <div class="calculator-container">
+                <!-- Progress Steps -->
+                <div class="progress-steps" id="progressSteps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Transport</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">Energy</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Diet</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span class="step-label">Water</span>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <span class="step-label">Waste</span>
+                    </div>
+                </div>
+
+                <!-- Quiz Form -->
+                <div class="calculator-form" id="calculatorForm">
+                    <div class="form-header fade-up delay-1">
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="formProgress"></div>
+                            </div>
+                            <span class="progress-text">Step <span id="currentStep">1</span> of 5</span>
+                        </div>
+                        
+                        <h2><i class="fa-solid fa-leaf"></i> Lifestyle Assessment</h2>
+                        <p>Answer these questions to calculate your environmental impact</p>
+                    </div>
+
+                    <form id="impactForm">
+                        <!-- Transportation -->
+                        <div class="question-group active-step" data-step="1">
+                            <div class="question-header">
+                                <h3><i class="fa-solid fa-car"></i> Transportation</h3>
+                                <span class="question-help" data-tooltip="How you travel affects your carbon footprint significantly">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Primary mode of transport:</label>
+                                    <div class="select-wrapper">
+                                        <select name="transport" required>
+                                            <option value="">Select your primary transport</option>
+                                            <option value="walk">🚶 Walking/Cycling</option>
+                                            <option value="public">🚌 Public Transport</option>
+                                            <option value="bike">🏍️ Motorcycle</option>
+                                            <option value="car">🚗 Personal Car</option>
+                                            <option value="multiple">🚗🚗 Multiple Cars</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Weekly travel distance (km):</label>
+                                    <div class="select-wrapper">
+                                        <select name="distance" required>
+                                            <option value="">Select distance</option>
+                                            <option value="low">🔵 Less than 50 km</option>
+                                            <option value="medium">🟡 50-150 km</option>
+                                            <option value="high">🟠 150-300 km</option>
+                                            <option value="very-high">🔴 More than 300 km</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-tips">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Consider carpooling or using public transport to reduce your impact</p>
+                            </div>
+                        </div>
+
+                        <!-- Energy Usage -->
+                        <div class="question-group" data-step="2" style="display: none;">
+                            <div class="question-header">
+                                <h3><i class="fa-solid fa-bolt"></i> Energy Usage</h3>
+                                <span class="question-help" data-tooltip="Energy consumption is a major contributor to carbon emissions">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Monthly electricity bill (₹):</label>
+                                    <div class="select-wrapper">
+                                        <select name="electricity" required>
+                                            <option value="">Select range</option>
+                                            <option value="low">🔵 Less than ₹1,000</option>
+                                            <option value="medium">🟡 ₹1,000 - ₹3,000</option>
+                                            <option value="high">🟠 ₹3,000 - ₹5,000</option>
+                                            <option value="very-high">🔴 More than ₹5,000</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Home heating/cooling:</label>
+                                    <div class="select-wrapper">
+                                        <select name="hvac" required>
+                                            <option value="">Select usage</option>
+                                            <option value="none">❄️ No AC/Heater</option>
+                                            <option value="minimal">🌡️ Occasional use</option>
+                                            <option value="moderate">🔥 Regular use</option>
+                                            <option value="heavy">♨️ Heavy use (24/7)</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-tips">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Switch to LED bulbs and unplug devices when not in use</p>
+                            </div>
+                        </div>
+
+                        <!-- Diet -->
+                        <div class="question-group" data-step="3" style="display: none;">
+                            <div class="question-header">
+                                <h3><i class="fa-solid fa-utensils"></i> Diet & Food</h3>
+                                <span class="question-help" data-tooltip="Food production accounts for 26% of global emissions">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Dietary preference:</label>
+                                    <div class="select-wrapper">
+                                        <select name="diet" required>
+                                            <option value="">Select diet type</option>
+                                            <option value="vegan">🌱 Vegan (Lowest impact)</option>
+                                            <option value="vegetarian">🥗 Vegetarian</option>
+                                            <option value="pescatarian">🐟 Pescatarian</option>
+                                            <option value="omnivore">🥩 Omnivore (balanced)</option>
+                                            <option value="meat-heavy">🍖 Meat-heavy diet</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Food waste level:</label>
+                                    <div class="select-wrapper">
+                                        <select name="food-waste" required>
+                                            <option value="">Select waste level</option>
+                                            <option value="minimal">✅ Minimal waste</option>
+                                            <option value="some">🟢 Some waste</option>
+                                            <option value="moderate">🟡 Moderate waste</option>
+                                            <option value="high">🔴 High waste</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-tips">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Plan meals to reduce food waste and choose local produce</p>
+                            </div>
+                        </div>
+
+                        <!-- Water Usage -->
+                        <div class="question-group" data-step="4" style="display: none;">
+                            <div class="question-header">
+                                <h3><i class="fa-solid fa-droplet"></i> Water Usage</h3>
+                                <span class="question-help" data-tooltip="Water conservation helps preserve this vital resource">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Daily shower time:</label>
+                                    <div class="select-wrapper">
+                                        <select name="shower" required>
+                                            <option value="">Select duration</option>
+                                            <option value="short">🚿 Less than 5 minutes</option>
+                                            <option value="medium">🚿 5-10 minutes</option>
+                                            <option value="long">🚿 10-15 minutes</option>
+                                            <option value="very-long">🚿 More than 15 minutes</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Water conservation practices:</label>
+                                    <div class="select-wrapper">
+                                        <select name="water-conservation" required>
+                                            <option value="">Select practices</option>
+                                            <option value="excellent">💧 Rainwater harvesting, low-flow fixtures</option>
+                                            <option value="good">💧 Turn off taps, fix leaks promptly</option>
+                                            <option value="average">💧 Basic conservation</option>
+                                            <option value="poor">💧 No specific practices</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-tips">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Install low-flow showerheads and fix leaks promptly</p>
+                            </div>
+                        </div>
+
+                        <!-- Waste & Consumption -->
+                        <div class="question-group" data-step="5" style="display: none;">
+                            <div class="question-header">
+                                <h3><i class="fa-solid fa-recycle"></i> Waste & Consumption</h3>
+                                <span class="question-help" data-tooltip="Reducing waste helps minimize landfill impact">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Plastic usage:</label>
+                                    <div class="select-wrapper">
+                                        <select name="plastic" required>
+                                            <option value="">Select usage level</option>
+                                            <option value="minimal">✅ Avoid single-use plastics</option>
+                                            <option value="low">🟢 Occasional plastic use</option>
+                                            <option value="moderate">🟡 Regular plastic use</option>
+                                            <option value="high">🔴 Heavy plastic use</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Shopping habits:</label>
+                                    <div class="select-wrapper">
+                                        <select name="shopping" required>
+                                            <option value="">Select habits</option>
+                                            <option value="minimal">🛍️ Buy only necessities</option>
+                                            <option value="conscious">🛍️ Conscious consumption</option>
+                                            <option value="regular">🛍️ Regular shopping</option>
+                                            <option value="frequent">🛍️ Frequent impulse buying</option>
+                                        </select>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-tips">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Use reusable bags and containers to reduce plastic waste</p>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" id="prevBtn" disabled>
+                                <i class="fa-solid fa-arrow-left"></i> Previous
+                            </button>
+                            <button type="button" class="btn btn-primary" id="nextBtn">
+                                Next <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            <button type="submit" class="btn btn-success" id="submitBtn" style="display: none;">
+                                <i class="fa-solid fa-calculator"></i> Calculate My Impact
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section fade-up" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <h2><i class="fa-solid fa-chart-pie"></i> Your Environmental Impact</h2>
+                        <p>Here's your personalized environmental assessment</p>
+                    </div>
+
+                    <div class="results-grid fade-up">
+                        <!-- Overall Score -->
+                        <div class="result-card main-score">
+                            <div class="score-circle" id="scoreCircle">
+                                <span class="score-number" id="totalScore">0</span>
+                                <span class="score-label">Impact Score</span>
+                                <div class="score-ring"></div>
+                            </div>
+                            <div class="score-description">
+                                <h3 id="scoreLevel">Calculating...</h3>
+                                <p id="scoreMessage">Please wait while we analyze your data</p>
+                                <div class="score-badges">
+                                    <span class="badge" id="impactBadge">🌍 Eco Impact</span>
+                                    <span class="badge" id="categoryBadge">📊 Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category Breakdown -->
+                        <div class="result-card fade-up">
+                            <h3><i class="fa-solid fa-chart-bar"></i> Impact Breakdown</h3>
+                            <div class="chart-container">
+                                <canvas id="breakdownChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Comparison -->
+                        <div class="result-card">
+                            <h3><i class="fa-solid fa-users"></i> How You Compare</h3>
+                            <div class="comparison-container">
+                                <div class="comparison-item">
+                                    <span>Your Impact:</span>
+                                    <div class="comparison-bar">
+                                        <div class="bar-fill user-bar" id="userBar"></div>
+                                    </div>
+                                    <span id="userImpact" class="impact-value">0 kg CO₂/year</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span>Average Person:</span>
+                                    <div class="comparison-bar">
+                                        <div class="bar-fill average-bar"></div>
+                                    </div>
+                                    <span class="impact-value">2,500 kg CO₂/year</span>
+                                </div>
+                                <div class="comparison-item">
+                                    <span>Eco Warrior:</span>
+                                    <div class="comparison-bar">
+                                        <div class="bar-fill eco-bar"></div>
+                                    </div>
+                                    <span class="impact-value">800 kg CO₂/year</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="result-card recommendations">
+                            <h3><i class="fa-solid fa-lightbulb"></i> Personalized Tips</h3>
+                            <div class="recommendations-list" id="recommendationsList">
+                                <!-- Recommendations will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="saveResultsBtn">
+                            <i class="fa-solid fa-save"></i> Save Results
+                        </button>
+                        <button class="btn btn-secondary" id="shareResultsBtn">
+                            <i class="fa-solid fa-share"></i> Share Results
+                        </button>
+                        <button class="btn btn-outline" id="retakeQuizBtn">
+                            <i class="fa-solid fa-redo"></i> Retake Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracking Section -->
+    <section class="tracking-section" id="trackingSection" style="display: none;">
+        <div class="section-container">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-chart-line"></i> Track Your Progress</h2>
+                <p>Monitor your environmental impact over time</p>
+            </div>
+
+            <div class="tracking-grid">
+                <div class="tracking-card">
+                    <h3>Previous Results</h3>
+                    <div id="historyList">
+                        <p>No previous results found. Take the quiz to start tracking!</p>
+                    </div>
+                </div>
+
+                <div class="tracking-card">
+                    <h3>Progress Chart</h3>
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/impact-calculator.js"></script>
+    
+    <!-- Inline Theme Toggle JavaScript -->
+    <script>
+        // Theme Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                body.classList.remove('dark-theme');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-theme')) {
+                    body.classList.remove('dark-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.classList.add('dark-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        });
+    </script>
+    
+    <script>
+        // Chatbase initialization
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="ws110ZzXAkEnbVsIy9g8d";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+
+    <script src="/frontend/js/components/footer-loader.js"></script>
+    <script src="../js/components/navbar-loader.js"></script>
+</body>
+
+</html>

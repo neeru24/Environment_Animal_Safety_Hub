@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoLife Blog | Awareness & Sustainability</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Read our latest articles on environmental awareness, sustainability, and animal safety.">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../../css/pages/blogs/blog.css" />
+
+  <link rel="stylesheet" href="../../css/components/footer.css" />
+  <link rel="stylesheet" href="../../css/components/navbar.css" />
+</head>
+
+<body>
+  <div id="cursor-container"></div>
+  <div id="navbar-container"></div>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <button class="theme-btn" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <!-- Skip to content for accessibility -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>📰 EcoLife Blog</h1>
+      <p>Awareness, sustainability & animal safety articles. Stay informed and make a difference 🌍</p>
+      
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Articles</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Readers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTER -->
+  <div class="category-filter">
+    <button class="filter-btn active" data-category="all">All Articles</button>
+    <button class="filter-btn" data-category="environment">Environment</button>
+    <button class="filter-btn" data-category="animal">Animal Safety</button>
+    <button class="filter-btn" data-category="sustainability">Sustainability</button>
+    <button class="filter-btn" data-category="climate">Climate</button>
+    <button class="filter-btn" data-category="tips">Eco Tips</button>
+  </div>
+
+  <!-- FEATURED POST -->
+  <section class="featured-post">
+    <h2 class="featured-title">Featured Article</h2>
+    <div class="featured-card">
+      <div class="featured-image">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+      <div class="featured-content">
+        <div class="featured-category">Environment</div>
+        <h2>The Future of Urban Green Spaces</h2>
+        <p>Discover how cities around the world are integrating nature into urban planning to combat climate change and improve residents' wellbeing. Learn about innovative approaches like vertical forests, green roofs, and community gardens.</p>
+        <div class="card-footer">
+          <a href="#" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 8 min read</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content" class="container">
+    <!-- Blog Card 1 -->
+    <div class="blog-card" data-category="environment">
+      <div class="blog-header">
+        <i class="fa-solid fa-leaf"></i>
+        <div class="category">Environment</div>
+      </div>
+      <div class="blog-content">
+        <h3>Why Trees Are the Lungs of Our Planet</h3>
+        <p>Learn how trees help fight climate change, improve air quality, and support biodiversity. Discover the science behind photosynthesis and carbon sequestration.</p>
+        <div class="card-footer">
+          <a href="./trees-blog-1.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 5 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="blog-card" data-category="animal">
+      <div class="blog-header">
+        <i class="fa-solid fa-paw"></i>
+        <div class="category">Animal Safety</div>
+      </div>
+      <div class="blog-content">
+        <h3>How to Help Stray Animals Safely</h3>
+        <p>Simple and responsible ways to feed, care, and protect stray animals in your area. Learn about local shelters, vaccination programs, and responsible feeding practices.</p>
+        <div class="card-footer">
+          <a href="./stray-animals-blog2.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 6 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="blog-card" data-category="sustainability">
+      <div class="blog-header">
+        <i class="fa-solid fa-recycle"></i>
+        <div class="category">Sustainability</div>
+      </div>
+      <div class="blog-content">
+        <h3>Waste Segregation: A Small Step, Big Impact</h3>
+        <p>Understand how proper waste segregation can reduce pollution and protect the environment. A practical guide to recycling at home and in your community.</p>
+        <div class="card-footer">
+          <a href="./waste-segregationBLOG3.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 7 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 4 -->
+    <div class="blog-card" data-category="climate">
+      <div class="blog-header">
+        <i class="fa-solid fa-earth-americas"></i>
+        <div class="category">Climate</div>
+      </div>
+      <div class="blog-content">
+        <h3>Climate Change Explained for Everyone</h3>
+        <p>An easy-to-understand guide to climate change, its causes, and how we can help. Breaking down complex science into actionable knowledge.</p>
+        <div class="card-footer">
+          <a href="./climatechange-blog3.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 10 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 5 -->
+    <div class="blog-card" data-category="tips">
+      <div class="blog-header">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div class="category">Eco Tips</div>
+      </div>
+      <div class="blog-content">
+        <h3>10 Zero-Waste Swaps for Your Home</h3>
+        <p>Simple swaps to reduce your household waste. From kitchen to bathroom, discover sustainable alternatives that are both eco-friendly and economical.</p>
+        <div class="card-footer">
+          <a href="./Zero-WasteBLOG5.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 4 min read</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Card 6 -->
+    <div class="blog-card" data-category="environment">
+      <div class="blog-header">
+        <i class="fa-solid fa-water"></i>
+        <div class="category">Environment</div>
+      </div>
+      <div class="blog-content">
+        <h3>Saving Our Oceans: The Microplastic Problem</h3>
+        <p>Learn about the impact of microplastics on marine ecosystems and what we can do to reduce plastic pollution in our oceans.</p>
+        <div class="card-footer">
+          <a href="./savingOceans-BLOG6.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="read-time"><i class="fa-regular fa-clock"></i> 9 min read</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h3>Stay Updated with EcoLife</h3>
+    <p>Subscribe to our newsletter for the latest articles, tips, and environmental news delivered to your inbox.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address">
+      <button type="submit">Subscribe</button>
+    </div>
+  </section>
+
+  <!-- BACK HOME -->
+  <div class="back-home-wrapper">
+    <button class="back-home-btn" onclick="window.location.href='../index.html'">
+      <i class="fa-solid fa-home"></i> Back to Home
+    </button>
+  </div>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <script src="../../js/pages/blogs/blog.js"></script>
+  <script src="../../js/components/component-loader.js"></script>
+</body>
+</html>
