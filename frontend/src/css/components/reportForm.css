@@ -191,11 +191,12 @@
 .report-form textarea {
   width: 100%;
   padding: 14px 16px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--input-border);
   border-radius: var(--radius-md);
   font-size: 1rem;
   transition: var(--transition-normal);
-  background: #fafafa;
+  background: var(--input-bg);
+  color: var(--input-text);
 }
 
 .report-form input:focus,

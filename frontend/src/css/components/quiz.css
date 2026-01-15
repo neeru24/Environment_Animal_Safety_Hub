@@ -1,7 +1,7 @@
 /* ===== KIDS QUIZ SECTION ===== */
 .kids-quiz-section {
   padding: var(--section-padding);
-  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%);
+  background: var(--quiz-bg);
   position: relative;
   overflow: hidden;
 }
