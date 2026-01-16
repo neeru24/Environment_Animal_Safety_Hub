@@ -85,6 +85,29 @@
     </div>
   </section>
 
+  <!-- Weather Widget Section -->
+  <section class="weather-section">
+    <div class="weather-container">
+      <div class="weather-header">
+        <h2 class="weather-title">Local Weather & Climate Action</h2>
+        <p class="weather-subtitle">See how current weather conditions affect your carbon footprint</p>
+      </div>
+      <div class="weather-widget" id="weatherWidget">
+        <div class="weather-loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading weather data...</p>
+        </div>
+      </div>
+      <div class="location-permission" id="locationPermission">
+        <button id="allowLocationBtn" class="permission-btn">
+          <i class="fas fa-map-marker-alt"></i>
+          Allow Location Access
+        </button>
+        <p class="permission-text">We need your location to show local weather and personalized climate tips</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Main Content -->
   <main class="main-content">
     
@@ -386,5 +409,6 @@
   <script src="/frontend/js/components/footer-loader.js"></script>
 
     <script src="../../js/components/navbar-loader.js"></script>
+    <script src="../../js/pages/climate.js"></script>
 </body>
 </html>
