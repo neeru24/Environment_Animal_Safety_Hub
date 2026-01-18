@@ -7,11 +7,27 @@
   <link rel="icon" type="image/png" href="../assets/images/others/envirnoment-logo.png">
   <title>Plant Care | EcoLife</title>
   <meta name="description" content="Expert gardening tips and plant care guide." />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ecolife-app.com/pages/plant-care.html">
+  <meta property="og:title" content="Plant Care Guide | EcoLife">
+  <meta property="og:description" content="Expert gardening tips and plant care guide. Learn how to grow and maintain healthy plants with our comprehensive guide.">
+  <meta property="og:image" content="https://ecolife-app.com/assets/images/others/plant-care-guide.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ecolife-app.com/pages/plant-care.html">
+  <meta property="twitter:title" content="Plant Care Guide | EcoLife">
+  <meta property="twitter:description" content="Expert gardening tips and plant care guide. Learn how to grow and maintain healthy plants with our comprehensive guide.">
+  <meta property="twitter:image" content="https://ecolife-app.com/assets/images/others/plant-care-guide.jpg">
+
 <link rel="stylesheet" href="../../css/global/utilities.css" />
   <!-- Core Stylesheets -->
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/components/navbar.css" />
   <link rel="stylesheet" href="../css/components/footer.css" />
+  <link rel="stylesheet" href="../css/components/share-modal.css" />
   
   <!-- Page-specific styles (Issue #648: Refactored from inline styles) -->
   <link rel="stylesheet" href="../css/pages/plant-care.css" />
@@ -46,7 +62,12 @@
           <h1>Grow Your Own <br>Green Paradise</h1>
           <p>Whether you have a small balcony or a large garden, we'll help you create your own green space.
             Discover expert tips, sustainable practices, and join our community.</p>
-          <a href="#tips" class="btn-custom"><i class="fa-solid fa-seedling"></i> Get Started</a>
+          <div class="hero-actions">
+            <a href="#tips" class="btn-custom"><i class="fa-solid fa-seedling"></i> Get Started</a>
+            <button class="share-button" onclick="sharePage()">
+              <i class="fas fa-share-alt"></i> Share Guide
+            </button>
+          </div>
         </div>
         <div class="hero-image-box" data-aos="fade-left">
           <img src="https://i.pinimg.com/736x/52/7a/cc/527accddb75efd9315c8d6afba2bba1d.jpg" alt="Gardening">
@@ -197,6 +218,32 @@
 <script src="/frontend/js/components/footer-loader.js"></script>
 <script src="../js/components/component-loader.js"></script>
   <script src="../js/components/navbar-loader.js"></script>
+
+  <!-- Social Share Modal -->
+  <div id="shareModalContainer"></div>
+
+  <!-- Social Share Scripts -->
+  <script src="../js/components/social-share.js"></script>
+  <script>
+    // Load share modal
+    fetch('../components/share-modal.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('shareModalContainer').innerHTML = html;
+      })
+      .catch(error => console.error('Failed to load share modal:', error));
+
+    // Share page function
+    function sharePage() {
+      if (window.socialShare) {
+        window.socialShare.openShareModal({
+          title: 'Plant Care Guide | EcoLife',
+          description: 'Expert gardening tips and plant care guide. Learn how to grow and maintain healthy plants with our comprehensive guide.',
+          image: 'https://ecolife-app.com/assets/images/others/plant-care-guide.jpg'
+        });
+      }
+    }
+  </script>
 </body>
 
 </html>

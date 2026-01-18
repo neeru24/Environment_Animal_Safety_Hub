@@ -7,11 +7,27 @@
     <title>Environmental Impact Calculator | EcoLife</title>
     <link rel="icon" type="image/png" href="../assets/images/others/FAVICON.png">
     <link rel="icon" type="image/png" href="/envirnoment-logo.png">
+    <meta name="description" content="Calculate your environmental impact and discover actionable steps to reduce your carbon footprint. Track your sustainability journey with our interactive calculator.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ecolife-app.com/pages/impact-calculator.html">
+    <meta property="og:title" content="Environmental Impact Calculator | EcoLife">
+    <meta property="og:description" content="Calculate your environmental impact and discover actionable steps to reduce your carbon footprint. Track your sustainability journey with our interactive calculator.">
+    <meta property="og:image" content="https://ecolife-app.com/assets/images/others/impact-calculator-preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ecolife-app.com/pages/impact-calculator.html">
+    <meta property="twitter:title" content="Environmental Impact Calculator | EcoLife">
+    <meta property="twitter:description" content="Calculate your environmental impact and discover actionable steps to reduce your carbon footprint. Track your sustainability journey with our interactive calculator.">
+    <meta property="twitter:image" content="https://ecolife-app.com/assets/images/others/impact-calculator-preview.png">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/components/navbar.css">
     <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/components/share-modal.css">
     <link rel="stylesheet" href="../css/pages/impact-calculator.css">
     <link rel="stylesheet" href="../../css/global/utilities.css" />
     <!-- Google Fonts -->
@@ -140,6 +156,9 @@
                 <div class="hero-actions fade-up delay-3">
                     <button class="btn btn-primary btn-xl pulse" id="startCalculatorBtn">
                         <i class="fa-solid fa-play"></i> Calculate Now
+                    </button>
+                    <button class="share-button" onclick="sharePage()">
+                        <i class="fas fa-share-alt"></i> Share Calculator
                     </button>
                 </div>
             </div>
@@ -1112,6 +1131,32 @@
     <script src="/frontend/js/components/footer-loader.js"></script>
     <script src="../js/components/navbar-loader.js"></script>
     <script src="../js/components/component-loader.js"></script>
+
+    <!-- Social Share Modal -->
+    <div id="shareModalContainer"></div>
+
+    <!-- Social Share Scripts -->
+    <script src="../js/components/social-share.js"></script>
+    <script>
+      // Load share modal
+      fetch('../components/share-modal.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('shareModalContainer').innerHTML = html;
+        })
+        .catch(error => console.error('Failed to load share modal:', error));
+
+      // Share page function
+      function sharePage() {
+        if (window.socialShare) {
+          window.socialShare.openShareModal({
+            title: 'Environmental Impact Calculator | EcoLife',
+            description: 'Calculate your environmental impact and discover actionable steps to reduce your carbon footprint. Track your sustainability journey with our interactive calculator.',
+            image: 'https://ecolife-app.com/assets/images/others/impact-calculator-preview.png'
+          });
+        }
+      }
+    </script>
 </body>
 
 </html>
