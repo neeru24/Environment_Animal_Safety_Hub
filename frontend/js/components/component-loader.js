@@ -164,6 +164,7 @@
         setupFooter();
         setupCursor();
         initTheme();
+        initFontSizeChanger();
 
         // Ensure FontAwesome is available
         if (!document.querySelector('link[href*="font-awesome"]')) {
