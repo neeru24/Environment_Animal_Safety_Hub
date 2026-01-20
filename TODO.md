@@ -1,4 +1,4 @@
-# Font Size Changer Feature Implementation
+# User Progress Tracking for Quizzes Feature Implementation
 
 ## Tasks
 - [x] Create `frontend/js/global/font-size-changer.js` module for font size adjustments with localStorage persistence and accessibility

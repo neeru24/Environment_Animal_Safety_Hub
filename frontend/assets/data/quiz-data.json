@@ -1,57 +1,68 @@
-[
-  {
-    "quizName": "Animal First Aid Quiz",
-    "questions": [
-      {
-        "question": "What should you do first when you find an injured animal?",
-        "options": ["Pick it up immediately", "Approach slowly and assess", "Run away", "Call friends"],
-        "answer": 1
-      },
-      {
-        "question": "How should you treat a snake bite on an animal?",
-        "options": ["Suck out the venom", "Apply ice and keep calm", "Cut the wound", "Give alcohol"],
-        "answer": 1
-      },
-      {
-        "question": "What are signs of poisoning in animals?",
-        "options": ["Excessive drooling and vomiting", "Happy and playful", "Sleeping normally", "Eating well"],
-        "answer": 0
-      },
-      {
-        "question": "How to stop bleeding from a wound?",
-        "options": ["Apply pressure with clean cloth", "Pour water on it", "Rub dirt in", "Leave it alone"],
-        "answer": 0
-      },
-      {
-        "question": "When should you seek professional help for an injured animal?",
-        "options": ["Always, even for minor injuries", "Only if it's bleeding heavily", "Never, handle it yourself", "Only if it's a pet"],
-        "answer": 0
-      },
-      {
-        "question": "What is the first step for animal CPR?",
-        "options": ["Check for breathing", "Start compressions", "Give mouth-to-mouth", "Call vet immediately"],
-        "answer": 0
-      },
-      {
-        "question": "How to treat a burn on an animal?",
-        "options": ["Apply butter or oil", "Cool with water for 10-20 minutes", "Cover with bandage tightly", "Ignore it"],
-        "answer": 1
-      },
-      {
-        "question": "What to do if an animal has a broken bone?",
-        "options": ["Move it to a safe place and immobilize", "Pick it up and carry", "Let it walk", "Apply heat"],
-        "answer": 0
-      },
-      {
-        "question": "Signs that an animal is choking?",
-        "options": ["Coughing and pawing at mouth", "Sleeping peacefully", "Eating normally", "Running around"],
-        "answer": 0
-      },
-      {
-        "question": "What NOT to do when helping an injured wild animal?",
-        "options": ["Feed it", "Handle it gently", "Keep distance if aggressive", "Call wildlife experts"],
-        "answer": 0
-      }
-    ]
+{
+  "quizzes": [
+    {
+      "quizName": "Animal First Aid Quiz",
+      "questions": [
+        {
+          "question": "What should you do first when you find an injured animal?",
+          "options": ["Pick it up immediately", "Approach slowly and assess", "Run away", "Call friends"],
+          "answer": 1
+        },
+        {
+          "question": "How should you treat a snake bite on an animal?",
+          "options": ["Suck out the venom", "Apply ice and keep calm", "Cut the wound", "Give alcohol"],
+          "answer": 1
+        },
+        {
+          "question": "What are signs of poisoning in animals?",
+          "options": ["Excessive drooling and vomiting", "Happy and playful", "Sleeping normally", "Eating well"],
+          "answer": 0
+        },
+        {
+          "question": "How to stop bleeding from a wound?",
+          "options": ["Apply pressure with clean cloth", "Pour water on it", "Rub dirt in", "Leave it alone"],
+          "answer": 0
+        },
+        {
+          "question": "When should you seek professional help for an injured animal?",
+          "options": ["Always, even for minor injuries", "Only if it's bleeding heavily", "Never, handle it yourself", "Only if it's a pet"],
+          "answer": 0
+        },
+        {
+          "question": "What is the first step for animal CPR?",
+          "options": ["Check for breathing", "Start compressions", "Give mouth-to-mouth", "Call vet immediately"],
+          "answer": 0
+        },
+        {
+          "question": "How to treat a burn on an animal?",
+          "options": ["Apply butter or oil", "Cool with water for 10-20 minutes", "Cover with bandage tightly", "Ignore it"],
+          "answer": 1
+        },
+        {
+          "question": "What to do if an animal has a broken bone?",
+          "options": ["Move it to a safe place and immobilize", "Pick it up and carry", "Let it walk", "Apply heat"],
+          "answer": 0
+        },
+        {
+          "question": "Signs that an animal is choking?",
+          "options": ["Coughing and pawing at mouth", "Sleeping peacefully", "Eating normally", "Running around"],
+          "answer": 0
+        },
+        {
+          "question": "What NOT to do when helping an injured wild animal?",
+          "options": ["Feed it", "Handle it gently", "Keep distance if aggressive", "Call wildlife experts"],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "userProgress": {
+    "Animal First Aid Quiz": {
+      "currentIndex": 0,
+      "answers": [],
+      "score": 0,
+      "remainingTime": 0,
+      "timestamp": null
+    }
   }
-]
+}

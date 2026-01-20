@@ -39,9 +39,11 @@ function createFloatingElements() {
 // Game Logic
 let quiz = [], index = 0, score = 0, seconds = 0, timer;
 let answers = [];
+let quizName = 'Kids Eco Quiz'; // Identify this quiz type
 
 // Progress Tracking
-const PROGRESS_KEY = 'quizProgress';
+const PROGRESS_KEY_PREFIX = 'quizProgress_';
+const EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 function saveProgress() {
     const progress = {
@@ -49,26 +51,33 @@ function saveProgress() {
         answers: answers,
         score: score,
         remainingTime: seconds,
+        quiz: quiz,
         timestamp: Date.now()
     };
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+    localStorage.setItem(PROGRESS_KEY_PREFIX + quizName, JSON.stringify(progress));
 }
 
 function loadProgress() {
-    const saved = localStorage.getItem(PROGRESS_KEY);
+    const saved = localStorage.getItem(PROGRESS_KEY_PREFIX + quizName);
     if (saved) {
         const progress = JSON.parse(saved);
+        // Check if progress is expired
+        if (Date.now() - progress.timestamp > EXPIRATION_TIME) {
+            clearProgress();
+            return false;
+        }
         index = progress.currentIndex || 0;
         answers = progress.answers || [];
         score = progress.score || 0;
         seconds = progress.remainingTime || 0;
+        quiz = progress.quiz || [];
         return true;
     }
     return false;
 }
 
 function clearProgress() {
-    localStorage.removeItem(PROGRESS_KEY);
+    localStorage.removeItem(PROGRESS_KEY_PREFIX + quizName);
 }
 
 // DOM Elements
@@ -83,6 +92,16 @@ const optionsEl = document.getElementById('options');
 
 // Initialize
 createFloatingElements();
+
+// Check for existing progress on page load
+if (loadProgress()) {
+    const resumeBtn = document.createElement('button');
+    resumeBtn.className = 'btn-secondary';
+    resumeBtn.textContent = 'Resume Quiz ⏯️';
+    resumeBtn.onclick = resumeQuiz;
+    resumeBtn.style.marginTop = '10px';
+    startScreen.appendChild(resumeBtn);
+}
 
 function startQuiz() {
     const timeSelect = document.getElementById('timeSelect');
@@ -166,7 +185,10 @@ function selectOption(el, i) {
     document.querySelectorAll(".option").forEach(o => o.classList.remove("selected"));
     el.classList.add("selected");
     answers[index] = i;
-    
+
+    // Save progress after selecting an option
+    saveProgress();
+
     // Optional: Play a small click sound here
 }
 
