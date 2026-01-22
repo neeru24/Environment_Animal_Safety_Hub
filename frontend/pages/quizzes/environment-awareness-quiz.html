@@ -89,11 +89,30 @@
     <p>This quiz helps kids learn about pollution, saving water, and caring for nature.</p>
     <br>
     <button onclick="startQuiz()">Start Quiz</button>
+
+    <!-- Resume Section -->
+    <div id="resumeSection" style="display: none; margin-top: 20px; padding: 15px; background: #f0f8ff; border-radius: 8px; border: 2px solid #4CAF50;">
+      <h3 style="color: #2E7D32; margin-bottom: 10px;">📚 Resume Your Previous Quiz</h3>
+      <p style="margin-bottom: 15px; color: #555;">You have an unfinished quiz. Would you like to continue where you left off?</p>
+      <button onclick="resumeSavedQuiz()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Resume Quiz</button>
+    </div>
   </div>
 
   <!-- QUIZ -->
   <div id="quizScreen">
     <div class="timer">⏳ Time Left: <span id="time">02:00</span></div>
+    <div class="progress-bar-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-metrics">
+        <span id="timeSpent">Time Spent: 0s</span> | <span id="questionsCompleted">Completed: 0/10</span>
+      </div>
+    </div>
+    <div class="pause-resume-buttons">
+      <button class="btn-secondary" id="pauseBtn" onclick="pauseQuiz()">⏸️ Pause</button>
+      <button class="btn-secondary" id="resumeBtn" onclick="resumeCurrentQuiz()" style="display:none;">▶️ Resume</button>
+    </div>
     <div class="question" id="question"></div>
     <div id="options"></div>
     <button onclick="nextQuestion()">Next</button>
