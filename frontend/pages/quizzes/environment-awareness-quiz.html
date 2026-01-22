@@ -15,7 +15,9 @@
 
   <link rel="stylesheet" href="../../css/components/footer.css" />
   <link rel="stylesheet" href="../../css/components/navbar.css" />
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- WhatsApp Button CSS -->
   <style>
     .whatsapp-btn {
@@ -74,10 +76,26 @@
 
   <div id="navbar-container"></div>
 
-<!-- HERO -->
 <div class="hero">
+  <div class="falling-leaves">
+    <i class="leaf">🍃</i>
+    <i class="leaf">🍂</i>
+    <i class="leaf">🌱</i>
+    <i class="leaf">🌿</i>
+    <i class="leaf">🍃</i>
+    <i class="leaf">🍂</i>
+    <i class="leaf">☘️</i>
+    <i class="leaf">🌿</i>
+  </div>
+
+ <div class="hero-content">
   <h1>🌍 Environment Awareness Quiz</h1>
   <p>Learn how to protect Earth while having fun 🌱</p>
+  
+  <button class="hero-btn" onclick="document.querySelector('.card').scrollIntoView({behavior: 'smooth'})">
+    Start Quiz Now 
+  </button>
+</div>
 </div>
 
 <!-- MAIN CARD -->

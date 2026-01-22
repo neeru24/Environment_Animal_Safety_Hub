@@ -9,11 +9,230 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/global/utilities.css" />
     <link rel="stylesheet" href="../../css/components/navbar.css" />
+    <style>
+        .main-content {
+            width: 95%;
+        }
+        /* Hero */
+        .hero-section {
+        padding: 3rem 0 2rem;
+        }
+
+        .hero-content h1 {
+        font-size: 2.4rem;
+        margin-bottom: 0.6rem;
+        }
+
+        .hero-content p {
+        line-height: 1.6;
+        margin-bottom: 1.8rem;
+        }
+
+        .hero-stats {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        }
+
+        .hero-stats .stat {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        }
+
+        .stat-number {
+        font-size: 1.5rem;
+        font-weight: 600;
+        }
+
+        /* Section Header */
+        .section-header {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        }
+
+        .section-header h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.3rem;
+        }
+
+        .section-header p {
+        font-size: 0.95rem;
+        }
+
+        /* Event Categories */
+        .event-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1.5rem;
+        }
+
+        .category-card {
+        border-radius: 12px;
+        border: 1px solid rgba(0,0,0,0.08);
+        padding: 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        transition: transform 0.2s ease;
+        }
+
+        .category-card:hover {
+        transform: translateY(-4px);
+        }
+
+        .category-icon {
+        font-size: 1.6rem;
+        }
+
+        .category-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        }
+
+        .category-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        }
+
+        .event-count {
+        margin-top: auto;
+        font-size: 0.85rem;
+        }
+
+        /* Upcoming Events */
+        .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.6rem;
+        }
+
+        .event-card {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        }
+
+        .event-image {
+        position: relative;
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        }
+
+        .event-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+
+        .event-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 0.25rem 0.6rem;
+        font-size: 0.7rem;
+        border-radius: 6px;
+        border: 1px solid currentColor;
+        }
+
+        .event-content {
+        padding: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        height: 100%;
+        }
+
+        .event-date {
+        font-size: 0.8rem;
+        }
+
+        .event-content h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        }
+
+        .event-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        }
+
+        .event-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+        }
+
+        .event-content button {
+        margin-top: auto;
+        align-self: flex-start;
+        }
+
+        /* CTA */
+        .create-event-section {
+        padding: 2.5rem 0;
+        }
+
+        .cta-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 2rem;
+        align-items: center;
+        padding: 2rem;
+        border-radius: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .cta-content h2 {
+        font-size: 1.7rem;
+        margin-bottom: 0.5rem;
+        }
+
+        .cta-content p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        }
+
+        .cta-image {
+        font-size: 3rem;
+        }
+
+        /* Buttons */
+        .btn-primary,
+        .btn-secondary {
+        padding: 0.5rem 1.1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        border: 1px solid currentColor;
+        background: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+        .hero-stats {
+            gap: 1rem;
+        }
+
+        .cta-card {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .event-image {
+            height: 160px;
+        }
+        }
+
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <div id="navbar-container"></div>
-    <div class="theme-toggle" id="themeToggle" title="Toggle Dark Mode"></div>
 
     <!-- Sidebar -->
     <aside class="sidebar column">
@@ -52,7 +271,7 @@
         <section class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <h1><i class="fas fa-calendar-alt"></i> Community Events</h1>
+                    <h1><i class="fas fa-calendar-alt"></i> Community Events</h1><br>
                     <p>Join community events, workshops, and gatherings focused on environmental conservation, animal welfare, and sustainable living. Connect with like-minded individuals and make a difference together.</p>
                     <div class="hero-stats">
                         <div class="stat">
@@ -226,7 +445,7 @@
         </section>
     </main>
 
-    <script src="../../js/components/navbar-loader.js"></script>
+    <script src="../../js/components/component-loader.js"></script>
     <script src="../../js/pages/community/events.js"></script>
 </body>
 </html>

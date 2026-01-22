@@ -378,34 +378,9 @@
 
         // ===== PRINT FUNCTIONALITY =====
         const printBtn = document.createElement('button');
+        printBtn.className = 'print-btn';
         printBtn.innerHTML = '<i class="fas fa-print"></i>';
         printBtn.title = 'Print Terms';
-        printBtn.style.cssText = `
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 99;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        `;
-
-        printBtn.addEventListener('mouseenter', () => {
-            printBtn.style.transform = 'scale(1.1)';
-        });
-
-        printBtn.addEventListener('mouseleave', () => {
-            printBtn.style.transform = 'scale(1)';
-        });
 
         printBtn.addEventListener('click', () => {
             window.print();

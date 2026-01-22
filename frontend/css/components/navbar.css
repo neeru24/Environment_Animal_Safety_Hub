@@ -58,8 +58,8 @@
 }
 
 .nav-container {
-  width: 92%;
-  max-width: 1400px;
+  width: 96%;
+  max-width: 1500px;
 
   padding: 0 20px;
   display: flex;
@@ -114,8 +114,10 @@
   font-weight: 500;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: var(--transition-normal);
-  margin-left: 20px;
+  margin-bottom: 20px;
   flex-shrink: 0;
+  width: fit-content;            /* ⬅️ content jitni width */
+  max-width: fit-content;
 }
 
 .live-clock:hover {
@@ -152,7 +154,8 @@
 .search-container {
   flex: 1;
   max-width: 400px;
-  margin: 0 20px;
+  /* margin: 0 20px; */
+  margin-bottom: 20px;
 }
 
 .search-form {
@@ -267,6 +270,10 @@
   width: 60%;
 }
 
+
+.font-size-increase {
+  margin-left: 15px;
+}
 /* ===== DROPDOWNS ===== */
 .nav-group {
   position: relative;
@@ -330,7 +337,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-left: 20px;
+  margin-left: auto;
   padding-left: 20px;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
@@ -348,6 +355,7 @@
   transition: var(--transition-normal);
   white-space: nowrap;
   text-decoration: none;
+  margin-left: 6px;
 }
 
 .btn-login:hover {
@@ -369,6 +377,7 @@
   white-space: nowrap;
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-left: 24px;
 }
 
 .btn-signup:hover {
@@ -660,15 +669,24 @@
 
   /* Mobile Auth Section */
   .nav-auth {
-    flex-direction: column;
-    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    /* width: 100%;
     margin: 30px 0 0 0;
-    padding: 20px 0 0 0;
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    align-items: flex-start;
+    padding: 20px 0 0 0; */
+    /* border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); */
+    margin-left: auto;
+    align-items: center;
     gap: 20px;
   }
+
+  .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  flex: 1;            
+}
 
   .auth-guest-only {
     width: 100%;
@@ -760,6 +778,9 @@
 
   .nav-links {
     width: 85%;
+    display: flex;
+    align-items: center;
+    gap: 28px;
   }
 
   /* Compact clock on phones - hide icon, show only time */

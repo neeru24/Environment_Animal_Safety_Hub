@@ -243,6 +243,13 @@ function handleFlipClick(card) {
     if (!isFlipped) {
         card.classList.add('flipped');
         card.setAttribute('data-flipped', 'true');
+        
+        // NEW: Get position for confetti
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        triggerConfetti(centerX, centerY); // Boom! 🎉
+
         progress.cardsFlipped++;
         updateAllDisplays();
         checkBadges();
@@ -578,3 +585,102 @@ document.querySelectorAll('.learning-modules, .flip-cards-section, .enviro-reels
     section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(section);
 });
+
+/**
+ * Initialize the interactive hero section effects
+ */
+function initializeHeroEffects() {
+    const hero = document.getElementById('hero');
+    
+    // Only enable parallax on non-touch devices
+    if (window.matchMedia("(hover: hover)").matches) {
+        hero.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.floating-icon');
+            const content = document.querySelector('.hero-content');
+            
+            // Calculate mouse position relative to center of screen
+            const mouseX = (window.innerWidth / 2 - e.clientX) / 50;
+            const mouseY = (window.innerHeight / 2 - e.clientY) / 50;
+
+            // Move decorative elements
+            elements.forEach(el => {
+                const speed = el.getAttribute('data-speed');
+                const x = mouseX * speed;
+                const y = mouseY * speed;
+                el.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            // Subtle movement for main content (opposite direction)
+            if (content) {
+                content.style.transform = `translate(${-mouseX * 0.5}px, ${-mouseY * 0.5}px)`;
+            }
+        });
+    }
+}
+
+
+
+
+// Function to handle button clicks for scrolling
+function scrollToSection(sectionId) {
+    const element = document.getElementById(sectionId) || document.querySelector('.' + sectionId);
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        console.warn('Section not found:', sectionId);
+    }
+}
+
+/* ========== EFFECTS ========== */
+
+/**
+ * Creates a confetti explosion effect
+ * @param {HTMLElement} element - The element to explode confetti from (optional)
+ */
+function triggerConfetti(x, y) {
+    const colors = ['#ffeb3b', '#4caf50', '#2196f3', '#f44336', '#9c27b0'];
+    
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        
+        // Random properties
+        const bg = colors[Math.floor(Math.random() * colors.length)];
+        const left = x || Math.random() * window.innerWidth;
+        const top = y || window.innerHeight / 2;
+        
+        confetti.style.position = 'fixed';
+        confetti.style.left = left + 'px';
+        confetti.style.top = top + 'px';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = bg;
+        confetti.style.borderRadius = '50%';
+        confetti.style.zIndex = '9999';
+        confetti.style.pointerEvents = 'none';
+        
+        document.body.appendChild(confetti);
+
+        // Animate
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 2 + Math.random() * 4;
+        const tx = Math.cos(angle) * velocity * 100;
+        const ty = Math.sin(angle) * velocity * 100;
+
+        const animation = confetti.animate([
+            { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+            { transform: `translate(${tx}px, ${ty}px) scale(0)`, opacity: 0 }
+        ], {
+            duration: 1000 + Math.random() * 500,
+            easing: 'cubic-bezier(0, .9, .57, 1)',
+            fill: 'forwards'
+        });
+
+        animation.onfinish = () => confetti.remove();
+    }
+}
+
+
