@@ -1,4 +1,3 @@
-🚨 Mandatory Contributor Registration
 
 Before starting any contribution, you MUST complete the registration form.
 
@@ -67,9 +66,9 @@ activities through education and quizzes.
 
 ## 📸 UI Preview
 
-![alt text](frontend/src/assets/images/Readme/IMG_1.png)
-![alt text](frontend/src/assets/images/Readme/IMG_2.png)  
-![alt text](frontend/src/assets/images/Readme/IMG_3.png)
+<img width="1870" height="857" alt="image" src="https://github.com/user-attachments/assets/d5b47f5d-ecf4-488b-bf70-4618b7b8b0fd" />
+<img width="1919" height="816" alt="image" src="https://github.com/user-attachments/assets/12067a87-2c7f-4683-a788-3c69e2897917" />
+
 
 ---
 
