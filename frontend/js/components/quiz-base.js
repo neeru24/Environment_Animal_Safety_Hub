@@ -25,9 +25,10 @@ class BaseQuiz {
     this.config = config;
     this.questions = config.questions;
     this.timeLimit = config.timeLimit;
-    this.progressKey = config.progressKey;
+    this.progressKey = config.progressKey || `${config.id}-progress`;
     this.iconClass = config.iconClass;
     this.elements = config.elements;
+    this.scoring = config.scoring;
 
     // Initialize ProgressManager
     this.progressManager = new ProgressManager(this.progressKey);
@@ -38,6 +39,40 @@ class BaseQuiz {
     this.time = this.timeLimit;
     this.timer = null;
     this.answers = [];
+  }
+
+  /**
+   * Create a quiz instance from registry by ID
+   * @param {string} quizId - The ID of the quiz to load from registry
+   * @param {Object} elements - DOM element references
+   * @returns {Promise<BaseQuiz|null>} The quiz instance or null if failed
+   */
+  static async createFromId(quizId, elements) {
+    try {
+      // Ensure registry is loaded
+      if (!quizRegistry.isLoaded) {
+        const loaded = await quizRegistry.loadQuizzes();
+        if (!loaded) {
+          console.error('Failed to load quiz registry');
+          return null;
+        }
+      }
+
+      // Get processed quiz config
+      const config = quizRegistry.getProcessedQuiz(quizId);
+      if (!config) {
+        console.error(`Quiz with ID '${quizId}' not found`);
+        return null;
+      }
+
+      // Add elements to config
+      config.elements = elements;
+
+      return new BaseQuiz(config);
+    } catch (error) {
+      console.error('Error creating quiz from ID:', error);
+      return null;
+    }
   }
 
   /**
