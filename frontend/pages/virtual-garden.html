@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="../assets/images/others/envirnoment-logo.png">
   <title>Virtual Garden | EcoLife</title>
   <meta name="description" content="Plant virtual trees, nurture them, and learn about environmental stewardship in our gamified Virtual Garden." />
-<!-- Core Stylesheets (minified in place) -->
+  <!-- Core Stylesheets (minified in place) -->
   <link rel="stylesheet" href="/frontend/css/global/utilities.css" />
   <link rel="stylesheet" href="/frontend/css/style.css" />
   <link rel="stylesheet" href="/frontend/css/components/navbar.css" />
@@ -19,7 +19,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins: wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
   <!-- Font Awesome Icons -->
@@ -32,10 +32,23 @@
 <body>
   <!-- Cursor Effect Container -->
   <div id="cursor-container"></div>
-  <script src="../js/components/loadComponents.js"></script>
 
-  <!-- Navbar Container (loaded dynamically by navbar-loader.js) -->
-  <div id="navbar-container"></div>
+  <!-- Navbar Container (loaded dynamically) -->
+  <div id="navbar-container">
+    <!-- Fallback navbar in case JavaScript fails -->
+    <nav class="temp-navbar" style="background: linear-gradient(135deg, #4CAF50, #2E7D32); padding: 1rem 2rem; color: white; display: flex; justify-content: space-between; align-items: center;">
+      <div class="logo">
+        <a href="/" style="color: white; text-decoration: none; font-weight: 700; font-size: 1.5rem;">
+          <i class="fa-solid fa-leaf"></i> EcoLife
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="/" style="color: white; margin-left: 20px; text-decoration: none;">Home</a>
+        <a href="/pages/virtual-garden.html" style="color: white; margin-left: 20px; text-decoration: none; font-weight: bold;">Virtual Garden</a>
+        <a href="/pages/ecopedia.html" style="color: white; margin-left: 20px; text-decoration: none;">Ecopedia</a>
+      </div>
+    </nav>
+  </div>
 
   <!-- Hero Section -->
   <section class="garden-hero">
@@ -44,7 +57,7 @@
         <div class="hero-text" data-aos="fade-right">
           <span class="section-tag"><i class="fa-solid fa-seedling"></i> Virtual Garden</span>
           <h1>Grow Your <br>Virtual Forest</h1>
-          <p>Plant trees, nurture them with care, and watch your garden flourish!  Learn about sustainability while earning achievements and rewards.</p>
+          <p>Plant trees, nurture them with care, and watch your garden flourish! Learn about sustainability while earning achievements and rewards.</p>
           <div class="hero-stats">
             <div class="stat">
               <span id="total-points">0</span>
@@ -61,7 +74,7 @@
           </div>
         </div>
         <div class="hero-image" data-aos="fade-left">
-          <img src="../assets/images/others/virtual-garden-hero.png" alt="Virtual Garden" onerror="this.src='https://via.placeholder.com/400x300/4CAF50/white?text=Virtual+Garden' ">
+          <img src="../assets/images/others/virtual-garden-hero.png" alt="Virtual Garden" onerror="this.src='https://via.placeholder.com/400x300/4CAF50/white?text=Virtual+Garden'">
         </div>
       </div>
     </div>
@@ -82,6 +95,11 @@
 
       <div class="garden-plot" id="garden-plot">
         <!-- Trees will be dynamically added here -->
+        <div class="empty-garden-message" style="text-align: center; padding: 40px; color: #666;">
+          <i class="fa-solid fa-seedling" style="font-size: 3rem; color: #4CAF50; margin-bottom: 20px;"></i>
+          <h3>Your garden is empty</h3>
+          <p>Plant your first tree to get started!</p>
+        </div>
       </div>
     </div>
   </section>
@@ -92,20 +110,68 @@
       <h2><i class="fa-solid fa-trophy"></i> Achievements</h2>
       <div class="achievements-grid" id="achievements-grid">
         <!-- Achievements will be dynamically added here -->
+        <div class="achievement-card" style="background: #f5f5f5; padding: 20px; border-radius: 10px; text-align: center;">
+          <i class="fa-solid fa-seedling" style="font-size: 2rem; color: #4CAF50;"></i>
+          <h3>First Tree</h3>
+          <p>Plant your first tree</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer Container (loaded dynamically by footer-loader.js) -->
-  <div id="footer-placeholder"></div>
+  <!-- Footer Container (loaded dynamically) -->
+  <div id="footer-placeholder">
+    <!-- Fallback footer in case JavaScript fails -->
+    <footer class="temp-footer" style="background: #2c3e50; color: white; padding: 2rem; text-align: center; margin-top: 3rem;">
+      <p>&copy; 2024 EcoLife Virtual Garden. All rights reserved.</p>
+      <p>Grow your virtual forest and learn about environmental stewardship.</p>
+    </footer>
+  </div>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="../js/components/navbar-loader.js"></script>
-  <script src="../js/components/loadComponents.js"></script>
   <script>
+    // Initialize AOS
     AOS.init();
+
+    // Load Navbar and Footer with proper error handling
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load Navbar
+      fetch('../components/navbar.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Navbar not found');
+          return response.text();
+        })
+        .then(html => {
+          document.getElementById('navbar-container').innerHTML = html;
+          // Remove the temporary navbar styles
+          const tempNav = document.querySelector('.temp-navbar');
+          if (tempNav) tempNav.style.display = 'none';
+        })
+        .catch(error => {
+          console.warn('Using fallback navbar:', error);
+          // Keep the fallback navbar visible
+        });
+
+      // Load Footer
+      fetch('../components/footer.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Footer not found');
+          return response.text();
+        })
+        .then(html => {
+          document.getElementById('footer-placeholder').innerHTML = html;
+          // Remove the temporary footer styles
+          const tempFooter = document.querySelector('.temp-footer');
+          if (tempFooter) tempFooter.style.display = 'none';
+        })
+        .catch(error => {
+          console.warn('Using fallback footer:', error);
+          // Keep the fallback footer visible
+        });
+    });
   </script>
+  
   <script src="../js/global/performance-monitor.js"></script>
   <script src="../js/global/optimized-image-loader.js"></script>
   <script src="../js/pages/virtual-garden.js"></script>
