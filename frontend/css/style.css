@@ -2831,6 +2831,7 @@ img {
 
 
 
+
    /* Mobile responsiveness */
 @media (max-width: 768px) {
   body {
@@ -2852,4 +2853,12 @@ img {
   h1, h2, h3 {
     text-align: center;
   }
+   button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+
 }
