@@ -70,6 +70,45 @@
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/pages/home.css" />
+  
+  <!-- Inline Interactive Elements Fix -->
+  <style>
+    /* Button Hover Effects */
+    .btn, button, .search-btn, .theme-toggle {
+      min-height: 44px;
+      min-width: 44px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4) !important;
+    }
+    
+    .btn-secondary:hover {
+      background: #4CAF50 !important;
+      color: white !important;
+      transform: translateY(-2px) !important;
+    }
+    
+    .search-btn:hover {
+      background: #45a049 !important;
+      transform: scale(1.05) !important;
+    }
+    
+    .theme-toggle:hover {
+      transform: rotate(180deg) scale(1.1) !important;
+      background: rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Focus States */
+    .btn:focus, button:focus {
+      outline: 3px solid #4CAF50 !important;
+      outline-offset: 2px !important;
+    }
+  </style>
 </head>
 <!-- <button id="scrollBottomBtn" title="Scroll to Bottom">
   ⬇️ -->
