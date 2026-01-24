@@ -1,25 +1,36 @@
 const express = require('express');
 const path = require('path');
+const helmet = require('helmet');
 require('dotenv').config();
 const connectDB = require('./backend/config/database');
 const initializeDatabase = require('./backend/init-db');
+const { rateLimits, sanitizeInput, mongoSanitizeMiddleware } = require('./backend/middleware/security');
 const app = express();
 
 // Connect to database
 connectDB();
 initializeDatabase();
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Security middleware
+app.use(helmet());
+app.use(rateLimits.general);
+app.use(mongoSanitizeMiddleware);
+app.use(sanitizeInput);
 
-// API Routes
+// Middleware
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// API Routes with validation
+const { validate } = require('./backend/middleware/validation');
+const { rateLimits } = require('./backend/middleware/security');
+
 app.use('/api/quiz', require('./backend/routes/quiz'));
 app.use('/api/animals', require('./backend/routes/animals'));
 app.use('/api/users', require('./backend/routes/users'));
 app.use('/api/reports', require('./backend/routes/reports'));
-app.use('/api/contact', require('./backend/routes/contact'));
-app.use('/api/auth', require('./backend/routes/auth'));
+app.use('/api/contact', rateLimits.contact, require('./backend/routes/contact'));
+app.use('/api/auth', rateLimits.auth, require('./backend/routes/auth'));
 app.use('/api/events', require('./backend/routes/events'));
 
 // Middleware to log all requests
@@ -60,6 +71,9 @@ app.get('/quality-control', (req, res) => {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend/index.html'));
 });
+
+// Error handling middleware
+app.use(require('./backend/middleware/errorHandler'));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

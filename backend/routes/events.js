@@ -1,5 +1,6 @@
 const express = require('express');
 const Event = require('../models/Event');
+const { validate } = require('../middleware/validation');
 const router = express.Router();
 
 // Get all events
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create new event
-router.post('/', async (req, res) => {
+router.post('/', validate('event'), async (req, res) => {
     try {
         const event = new Event(req.body);
         await event.save();

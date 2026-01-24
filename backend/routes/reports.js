@@ -1,5 +1,6 @@
 const express = require('express');
 const Report = require('../models/Report');
+const { validate } = require('../middleware/validation');
 const router = express.Router();
 
 // Get all reports
@@ -13,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Create new report
-router.post('/', async (req, res) => {
+router.post('/', validate('report'), async (req, res) => {
     try {
         const report = new Report(req.body);
         await report.save();

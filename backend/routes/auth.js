@@ -1,9 +1,10 @@
 const express = require('express');
 const User = require('../models/User');
+const { validate } = require('../middleware/validation');
 const router = express.Router();
 
 // Register user
-router.post('/register', async (req, res) => {
+router.post('/register', validate('user'), async (req, res) => {
     try {
         const { username, email, password } = req.body;
         
