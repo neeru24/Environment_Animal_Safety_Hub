@@ -111,7 +111,7 @@
                 <div class="filters-container" data-aos="fade-up" data-aos-delay="100">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="searchInput" placeholder="Search items..." />
+                        <input type="text" id="search" class="search"  placeholder="Search items..." />
                     </div>
 
                     <div class="filter-group">
@@ -451,6 +451,39 @@
     <script src="../../js/components/navbar.js"></script>
     <script src="../../js/components/footer.js"></script>
     <script src="../../js/pages/community/eco-swap.js"></script>
+     <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    // Load Navbar
+    fetch('../../components/navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+        // Fix navbar links for this page location
+        const navLinks = document.querySelectorAll('#navbar-container a');
+        navLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          if (href && !href.startsWith('http') && !href.startsWith('#')) {
+            if (href.startsWith('index.html')) {
+              link.setAttribute('href', '../../' + href);
+            } else if (href.startsWith('pages/')) {
+              link.setAttribute('href', '../../' + href);
+            }
+          }
+        });
+      });
+
+    // Load Footer
+    fetch('../../components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      });
+  </script>
 </body>
 
 </html>

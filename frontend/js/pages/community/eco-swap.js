@@ -197,7 +197,7 @@ const itemsPerPage = 9;
 // DOM ELEMENTS
 // ===================================
 
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('search');
 const categoryFilter = document.getElementById('categoryFilter');
 const typeFilter = document.getElementById('typeFilter');
 const sortFilter = document.getElementById('sortFilter');
