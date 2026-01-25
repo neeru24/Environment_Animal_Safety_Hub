@@ -87,20 +87,58 @@ pollutionAwarenessQuiz.showResult = function() {
 // Initialize quiz on page load
 pollutionAwarenessQuiz.initializeQuiz();
 
-// Global functions for HTML onclick handlers
-window.startQuiz = () => pollutionAwarenessQuiz.startQuiz();
-window.resumeSavedQuiz = () => pollutionAwarenessQuiz.resumeQuiz();
-window.nextQuestion = () => pollutionAwarenessQuiz.nextQuestion();
-window.pauseQuiz = () => {
-  clearInterval(pollutionAwarenessQuiz.timer);
-  pollutionAwarenessQuiz.timer = null;
-  pollutionAwarenessQuiz.saveProgress();
-  document.getElementById('pauseBtn').style.display = 'none';
-  document.getElementById('resumeBtn').style.display = 'inline-block';
-  alert("Quiz paused! Click resume to continue.");
-};
-window.resumeQuiz = () => {
-  document.getElementById('resumeBtn').style.display = 'none';
-  document.getElementById('pauseBtn').style.display = 'inline-block';
-  pollutionAwarenessQuiz.startTimer();
-};
+// Add event listeners for quiz interactions
+document.addEventListener('DOMContentLoaded', () => {
+  // Start quiz button
+  const startBtn = document.getElementById('startQuizBtn');
+  if (startBtn) {
+    startBtn.addEventListener('click', () => pollutionAwarenessQuiz.startQuiz());
+  }
+
+  // Resume saved quiz button
+  const resumeSavedBtn = document.getElementById('resumeSavedQuizBtn');
+  if (resumeSavedBtn) {
+    resumeSavedBtn.addEventListener('click', () => pollutionAwarenessQuiz.resumeQuiz());
+  }
+
+  // Next question button
+  const nextBtn = document.getElementById('nextQuestionBtn');
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => pollutionAwarenessQuiz.nextQuestion());
+  }
+
+  // Pause button
+  const pauseBtn = document.getElementById('pauseBtn');
+  if (pauseBtn) {
+    pauseBtn.addEventListener('click', () => {
+      clearInterval(pollutionAwarenessQuiz.timer);
+      pollutionAwarenessQuiz.timer = null;
+      pollutionAwarenessQuiz.saveProgress();
+      pauseBtn.style.display = 'none';
+      document.getElementById('resumeBtn').style.display = 'inline-block';
+      alert("Quiz paused! Click resume to continue.");
+    });
+  }
+
+  // Resume button
+  const resumeBtn = document.getElementById('resumeBtn');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', () => {
+      resumeBtn.style.display = 'none';
+      document.getElementById('pauseBtn').style.display = 'inline-block';
+      pollutionAwarenessQuiz.startTimer();
+    });
+  }
+
+  // Play again button
+  const playAgainBtn = document.getElementById('playAgainBtn');
+  if (playAgainBtn) {
+    playAgainBtn.addEventListener('click', () => location.reload());
+  }
+
+  // Back button
+  const backBtn = document.getElementById('backBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => window.location.href = '../games/kids-zone.html');
+  }
+});

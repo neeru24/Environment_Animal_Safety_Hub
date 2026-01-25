@@ -105,13 +105,13 @@
   <div id="startScreen">
     <h2>Ready to Fight Pollution?</h2>
     <p>10 questions • 3 minutes</p>
-    <button onclick="startQuiz()">Start Quiz</button>
+    <button id="startQuizBtn">Start Quiz</button>
 
     <!-- Resume Section -->
     <div id="resumeSection" style="display: none; margin-top: 20px; padding: 15px; background: #f0f8ff; border-radius: 8px; border: 2px solid #4CAF50;">
       <h3 style="color: #2E7D32; margin-bottom: 10px;">📚 Resume Your Previous Quiz</h3>
       <p style="margin-bottom: 15px; color: #555;">You have an unfinished quiz. Would you like to continue where you left off?</p>
-      <button onclick="resumeSavedQuiz()" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Resume Quiz</button>
+      <button id="resumeSavedQuizBtn" style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Resume Quiz</button>
     </div>
   </div>
 
@@ -127,12 +127,12 @@
       </div>
     </div>
     <div class="pause-resume-buttons">
-      <button class="btn-secondary" id="pauseBtn" onclick="pauseQuiz()">⏸️ Pause</button>
-      <button class="btn-secondary" id="resumeBtn" onclick="resumeQuiz()" style="display:none;">▶️ Resume</button>
+      <button class="btn-secondary" id="pauseBtn">⏸️ Pause</button>
+      <button class="btn-secondary" id="resumeBtn" style="display:none;">▶️ Resume</button>
     </div>
     <div class="question" id="question"></div>
     <div id="options"></div>
-    <button onclick="nextQuestion()">Next</button>
+    <button id="nextQuestionBtn">Next</button>
   </div>
 
   <!-- RESULT -->
@@ -142,7 +142,7 @@
     <p id="remark"></p>
 
     <div class="result-buttons">
-      <button onclick="location.reload()">Play Again</button>
+      <button id="playAgainBtn">Play Again</button>
       <!-- WhatsApp Share Button Added Here -->
       <button class="whatsapp-btn" id="whatsappShareBtn">
         <i class="fab fa-whatsapp"></i> Share Score
@@ -153,7 +153,7 @@
 </div>
 
 <div class="back-wrapper">
-  <button onclick="window.location.href='../games/kids-zone.html'">⬅ Back to Dashboard</button>
+  <button id="backBtn">⬅ Back to Dashboard</button>
 </div>
 
 <!-- Footer placeholder -->
