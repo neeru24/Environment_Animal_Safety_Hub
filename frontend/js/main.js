@@ -65,6 +65,11 @@ const MODAL_CONTENT = {
     body: `
       <p>Join our movement to combat climate change through local actions and global awareness.</p>
       <p>We organize weekly seminars, school programs, and policy advocacy campaigns to push for greener regulations.</p>
+      <h4>Climate Adaptation Resources:</h4>
+      <ul>
+        <li><a href="./pages/environment/climate-resilient-habitats.html" class="btn btn-primary" style="margin:5px;"> 🛡️ Climate-Resilient Habitats</a></li>
+        <li><a href="./pages/environment/climate-awareness.html" class="btn btn-primary" style="margin:5px;"> 🌡️ Climate Awareness</a></li>
+      </ul>
     `
   },
   'tree-plant': {
