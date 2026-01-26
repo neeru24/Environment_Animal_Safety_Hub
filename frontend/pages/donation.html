@@ -34,7 +34,7 @@
     <div id="navbar-container"></div>
 
     <!-- Hero Section for Donation Page -->
-    <section class="hero-section" style="padding: 100px 20px; background: linear-gradient(135deg, #2e7d32, #4caf50);">
+    <section class="hero-section" style="padding: 100px 20px; background: linear-gradient(135deg, #2e7d32, #4caf50); margin-top:20px;">
         <div class="section-container">
             <div class="hero-content" data-aos="fade-up">
                 <span class="hero-badge" style="background: rgba(255,255,255,0.2);">
@@ -170,6 +170,15 @@
     <script src="../js/donation.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+  <script>
+    // Load navbar and footer
+    fetch('../components/navbar.html').then(r => r.text()).then(html => {
+      document.getElementById('navbar-container').innerHTML = html;
+    });
+    fetch('../components/footer.html').then(r => r.text()).then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    });
+    </script>
     <script>
         // Initialize AOS
         AOS.init({
