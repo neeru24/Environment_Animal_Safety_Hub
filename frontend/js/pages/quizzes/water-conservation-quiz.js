@@ -3,52 +3,28 @@
  *
  * An interactive quiz focused on water conservation practices and awareness.
  *
- * Now extends BaseQuiz for unified progress tracking.
+ * Uses QuizLoader for unified loading and initialization.
  *
  * @author Environment Animal Safety Hub Team
- * @version 2.0.0
+ * @version 3.0.0
  * @since 2024
  */
 
-// DOM elements
-const elements = {
-  startScreen: document.getElementById('readyScreen'),
-  quizScreen: document.getElementById('quizScreen'),
-  resultScreen: document.getElementById('quizScreen'), // Reuse quiz screen for results
-  questionEl: document.getElementById('question'),
-  optionsEl: document.getElementById('options'),
-  timeEl: null, // No timer display
-  scoreEl: document.getElementById('score'),
-  remarkEl: document.getElementById('feedback')
-};
-
-// Load quiz data and create instance
-let waterConservationQuiz = null;
-
-async function loadWaterConservationQuiz() {
-  try {
-    const response = await fetch('../../assets/data/quiz-data.json');
-    if (!response.ok) {
-      throw new Error('Failed to load quiz data');
-    }
-    const data = await response.json();
-    const quizData = data.quizzes.find(q => q.id === 'water-conservation');
-    if (!quizData) {
-      throw new Error('Water conservation quiz data not found');
-    }
-
-    const quizConfig = {
-      questions: quizData.questions,
-      timeLimit: quizData.timeLimit,
-      progressKey: quizData.progressKey,
-      iconClass: quizData.iconClass,
-      elements: elements
-    };
-
-    waterConservationQuiz = new BaseQuiz(quizConfig);
-
-    // Override loadQuestion to handle custom option buttons
-    waterConservationQuiz.loadQuestion = function() {
+// Create quiz loader with custom elements and overrides
+const waterConservationLoader = new QuizLoader('water-conservation', {
+  customElements: {
+    startScreen: document.getElementById('readyScreen'),
+    quizScreen: document.getElementById('quizScreen'),
+    resultScreen: document.getElementById('quizScreen'), // Reuse quiz screen for results
+    questionEl: document.getElementById('question'),
+    optionsEl: document.getElementById('options'),
+    timeEl: null, // No timer display
+    scoreEl: document.getElementById('score'),
+    remarkEl: document.getElementById('feedback')
+  },
+  customOverrides: {
+    // Custom loadQuestion to handle option buttons
+    loadQuestion: function() {
       // Call parent method
       BaseQuiz.prototype.loadQuestion.call(this);
 
@@ -58,10 +34,10 @@ async function loadWaterConservationQuiz() {
         button.style.backgroundColor = "#e8f5e9";
         button.disabled = false;
       });
-    };
+    },
 
-    // Override selectOption to handle custom feedback
-    waterConservationQuiz.selectOption = function(element, optionIndex) {
+    // Custom selectOption to handle feedback
+    selectOption: function(element, optionIndex) {
       // Call parent method
       BaseQuiz.prototype.selectOption.call(this, element, optionIndex);
 
@@ -83,10 +59,10 @@ async function loadWaterConservationQuiz() {
       }
 
       if (nextBtn) nextBtn.disabled = false;
-    };
+    },
 
-    // Override showResult for custom completion display
-    waterConservationQuiz.showResult = function() {
+    // Custom showResult for completion display
+    showResult: function() {
       // Call parent method
       BaseQuiz.prototype.showResult.call(this);
 
@@ -101,10 +77,10 @@ async function loadWaterConservationQuiz() {
       if (nextBtn) nextBtn.style.display = "none";
       feedbackEl.textContent = `Final score ${this.score}/${this.questions.length}`;
       feedbackEl.style.color = "#2e7d32";
-    };
+    },
 
-    // Override startQuiz to handle screen transitions
-    waterConservationQuiz.startQuiz = function() {
+    // Custom startQuiz for screen transitions
+    startQuiz: function() {
       // Custom screen transition
       const readyScreen = document.getElementById('readyScreen');
       const quizScreen = document.getElementById('quizScreen');
@@ -114,25 +90,25 @@ async function loadWaterConservationQuiz() {
 
       // Call parent method
       BaseQuiz.prototype.startQuiz.call(this);
-    };
-
-    waterConservationQuiz.initializeQuiz();
-  } catch (error) {
-    console.error('Error loading water conservation quiz:', error);
-    alert('Failed to load quiz data. Please try again later.');
+    }
   }
-}
+});
 
 // Global functions for HTML onclick handlers
 window.startQuiz = () => {
-  if (waterConservationQuiz) waterConservationQuiz.startQuiz();
+  const quiz = waterConservationLoader.getQuiz();
+  if (quiz) quiz.startQuiz();
 };
 window.resumeQuiz = () => {
-  if (waterConservationQuiz) waterConservationQuiz.resumeQuiz();
+  const quiz = waterConservationLoader.getQuiz();
+  if (quiz) quiz.resumeQuiz();
 };
 window.nextQuestion = () => {
-  if (waterConservationQuiz) waterConservationQuiz.nextQuestion();
+  const quiz = waterConservationLoader.getQuiz();
+  if (quiz) quiz.nextQuestion();
 };
 
 // Load quiz on page load
-document.addEventListener('DOMContentLoaded', loadWaterConservationQuiz);
+document.addEventListener('DOMContentLoaded', () => {
+  waterConservationLoader.loadQuiz();
+});
