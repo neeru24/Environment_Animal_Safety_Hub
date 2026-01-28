@@ -141,6 +141,7 @@
         "good": { "min": 5, "remark": "👍 Good Awareness!" },
         "poor": { "remark": "🌱 Keep Learning!" }
       },
+      "progressKey": "pollution-awareness-quiz",
       "progressMetadata": {
         "userProgress": {
           "currentIndex": 0,
